@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="ResourceManagementSystem:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="Soen387-1.0-Project.war">
+      <element id="artifact" artifact-name="ResourceManagementSystem:war exploded" />
+    </root>
+  </artifact>
+</component>
