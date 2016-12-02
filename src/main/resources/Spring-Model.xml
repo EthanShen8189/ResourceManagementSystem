@@ -2,18 +2,18 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
        http://www.springframework.org/schema/beans/spring-beans-3.2.xsd">
-<!--
 
-    <bean id="productDao" class="concordia.soen387.a2.Dao.ProductDaoImpl">
+
+    <bean id="reservationDao" class="concordia.soen387.project.Dao.ReservationDaoImpl">
         <constructor-arg ref="dataSource"/>
     </bean>
+    <!--
+        <bean id="contractDao" class="concordia.soen387.a2.Dao.ContractDaoImpl">
+            <constructor-arg ref="dataSource"/>
+        </bean>
 
-    <bean id="contractDao" class="concordia.soen387.a2.Dao.ContractDaoImpl">
-        <constructor-arg ref="dataSource"/>
-    </bean>
-
-    <bean id="revenueRecognitionDao" class="concordia.soen387.a2.Dao.RevenueRecognitionDaoImpl">
-        <constructor-arg ref="dataSource"/>
-    </bean>
--->
+        <bean id="revenueRecognitionDao" class="concordia.soen387.a2.Dao.RevenueRecognitionDaoImpl">
+            <constructor-arg ref="dataSource"/>
+        </bean>
+    -->
 </beans>
