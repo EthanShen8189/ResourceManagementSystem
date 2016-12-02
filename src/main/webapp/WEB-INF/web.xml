@@ -4,7 +4,7 @@
 	http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
          version="2.5">
 
-    <display-name>Spring3 MVC Application</display-name>
+    <display-name>Resource Management System</display-name>
 
     <servlet>
         <servlet-name>spring-web</servlet-name>
@@ -17,6 +17,7 @@
     <servlet-mapping>
         <servlet-name>spring-web</servlet-name>
         <url-pattern>/</url-pattern>
+        <url-pattern>/ResourceManagementSystem/*</url-pattern>
     </servlet-mapping>
 
 </web-app>

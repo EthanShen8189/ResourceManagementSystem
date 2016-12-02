@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>Concordia</groupId>
-    <artifactId>Soen387</artifactId>
+    <artifactId>ResourceManagementSystem</artifactId>
     <version>1.0-Project</version>
     <packaging>war</packaging>
 
