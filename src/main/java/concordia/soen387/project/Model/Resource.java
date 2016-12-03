@@ -10,7 +10,7 @@ public class Resource {
 	private int resourceUID;
 
 	public Resource(int id, int available, String description,
-			int movable, String name){
+					int movable, String name){
 		this.id = id;
 		this.available = available;
 		this.description = description;
@@ -56,6 +56,14 @@ public class Resource {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public int getResourceUID() {
+		return resourceUID;
+	}
+
+	public void setResourceUID(int resourceUID) {
+		this.resourceUID = resourceUID;
 	}
 	
 	
