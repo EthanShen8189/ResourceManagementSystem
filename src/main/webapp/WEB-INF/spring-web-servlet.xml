@@ -19,6 +19,16 @@
         <property name="suffix" value=".jsp"/>
     </bean>
 
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/WEB-INF/jsp/inventory/"/>
+        <property name="suffix" value=".jsp"/>
+    </bean>
+
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/WEB-INF/jsp/reservation"/>
+        <property name="suffix" value=".jsp"/>
+    </bean>
+
     <mvc:resources mapping="/resources/**" location="/resource/" />
 
     <mvc:annotation-driven />

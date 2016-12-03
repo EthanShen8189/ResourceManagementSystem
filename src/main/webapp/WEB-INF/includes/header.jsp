@@ -11,12 +11,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Revenue Recognition Application</title>
+    <title>Resource Management</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <spring:url value="/resources/core/js/bootstrap.min.js" var="bootstrapJs" />
     <spring:url value="/resources/core/css/bootstrap.min.css" var="bootstrapCss" />
+    <spring:url value="/resources/core/font-awesome-4.7.0/css/font-awesome.min.css" var="faCss" />
     <link href="${bootstrapCss}" rel="stylesheet" />
     <link href="${bootstrapJs}" rel="script"/>
+    <link href="${faCss}" rel="stylesheet"/>
 </head>
 <body>
 <nav class="navbar navbar-inverse navbar-fixed-top">

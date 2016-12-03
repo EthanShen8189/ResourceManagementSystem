@@ -8,10 +8,7 @@
 <div class="container">
     <hr>
     <footer>
-        <p>Concordia University_SOEN387_Project
-            <br>
-            Team 3
-        </p>
+        <p>Concordia University_SOEN387_F16_FinalProject</p>
     </footer>
 </div>
 </body>

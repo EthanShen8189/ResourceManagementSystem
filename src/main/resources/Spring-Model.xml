@@ -7,13 +7,13 @@
     <bean id="reservationDao" class="concordia.soen387.project.Dao.ReservationDaoImpl">
         <constructor-arg ref="dataSource"/>
     </bean>
-    <!--
-        <bean id="contractDao" class="concordia.soen387.a2.Dao.ContractDaoImpl">
-            <constructor-arg ref="dataSource"/>
-        </bean>
 
-        <bean id="revenueRecognitionDao" class="concordia.soen387.a2.Dao.RevenueRecognitionDaoImpl">
+        <bean id="employeeDao" class="concordia.soen387.project.Dao.EmployeeDaoImpl">
             <constructor-arg ref="dataSource"/>
         </bean>
-    -->
+    <!--
+            <bean id="revenueRecognitionDao" class="concordia.soen387.a2.Dao.RevenueRecognitionDaoImpl">
+                <constructor-arg ref="dataSource"/>
+            </bean>
+        -->
 </beans>
