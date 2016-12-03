@@ -26,17 +26,19 @@ public class LoginController {
                                      @RequestParam String password,
                                      ModelMap model){
         if(username.equals("") || password.equals("")){
-            model.put("errorMsg", "Please Enter Employee Name and Password.");
+            model.put("errorMsg", "Please Enter Employee ID and Password.");
             return "login";
 
         }else{
             String name = loginService.loginValidation(employeeType, username, password);
             if(!name.equalsIgnoreCase("") && employeeType.toLowerCase().contains("admin")) {
-                model.put("name", name);
+                model.put("name", name.substring(name.indexOf(":")));
+                model.put("username", name.substring(0,name.indexOf(":")));
                 return "inventory/invIndex";
 
             }else if(!name.equalsIgnoreCase("") && employeeType.toLowerCase().contains("employee")){
-                model.put("name", name);
+                model.put("name", name.substring(name.indexOf(":")));
+                model.put("username", name.substring(0,name.indexOf(":")));
                 return "reservation/resIndex";
 
             }else{

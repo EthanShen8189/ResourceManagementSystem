@@ -10,15 +10,10 @@ import java.util.List;
 public interface ReservationDao {
 
     void addReservation(Reservation Reservation);
-
     void updateReservation(Reservation Reservation);
-
     void deleteReservation(int ReservationId);
-
     Reservation getReservationById(int ReservationId);
-
     Reservation getLastestReservation();
-
     List<Reservation> getAllReservation();
     
 }
