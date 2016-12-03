@@ -20,18 +20,18 @@ public class LoginController {
         return "login";
     }
 
-    @RequestMapping(value="/login" ,method = RequestMethod.POST, params = {"username", "password"})
+    @RequestMapping(value="/home" ,method = RequestMethod.POST, params = {"username", "password"})
     public String handleLoginRequest(@RequestParam String username,
                                      @RequestParam String password,
                                      ModelMap model){
         if(username.equals("") || password.equals("")){
-            model.put("errorMsg", "Please Enter User Name and Password.");
+            model.put("errorMsg", "Please Enter Employee Name and Password.");
             return "login";
 
         }else{
             if(loginService.loginValidation(username, password)) {
                 model.put("name", username);
-                return "index";
+                return "inventory/invIndex";
             }else{
                 model.put("errorMsg", "Invalid Credential!");
                 return "login";

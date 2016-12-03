@@ -1,6 +1,5 @@
 package concordia.soen387.project.Model;
 
-
 public class Resource {
 
 	private int id;
@@ -8,7 +7,8 @@ public class Resource {
 	private String description;
 	private int movable;
 	private String name;
-	
+	private int resourceUID;
+
 	public Resource(int id, int available, String description,
 			int movable, String name){
 		this.id = id;

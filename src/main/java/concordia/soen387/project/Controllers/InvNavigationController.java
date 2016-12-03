@@ -11,35 +11,39 @@ public class InvNavigationController {
 	//private InvNavigationBarService invNavigationBarService = new InvNavigationBarService();
 	
 	//accountSettings
-	@RequestMapping(value = "/accountSettingsTab")
+	@RequestMapping(value = "/manageInventory")
 	public ModelAndView accountSettingsNav(){
-		modelAndView.setViewName("invIndex");
-		modelAndView.addObject("accountSettingsTabActive", "active");
-		modelAndView.addObject("addComputerTabActive","");
-		modelAndView.addObject("addBoardTabActive", "");
-		modelAndView.addObject("addRoomTabActive","");
-		modelAndView.addObject("addProjectorTabActive","");
-		modelAndView.addObject("editItemTabActive", "");
-		modelAndView.addObject("selectedTab", "../jsp/inventory/accountSettings.jsp");
-		return modelAndView;
-		
-	}
-	
-	
-	//addComputertab
-	@RequestMapping(value = "/addComputerTab")
-	public ModelAndView addComputerNav(){
-		modelAndView.setViewName("invIndex");
+		modelAndView.setViewName("inventory/invIndex");
+		modelAndView.addObject("manageInventoryTabActive", "active");
 		modelAndView.addObject("accountSettingsTabActive", "");
-		modelAndView.addObject("addComputerTabActive","active");
-		modelAndView.addObject("addBoardTabActive", "");
-		modelAndView.addObject("addRoomTabActive","");
-		modelAndView.addObject("addProjectorTabActive","");
-		modelAndView.addObject("editItemTabActive", "");
-		modelAndView.addObject("selectedTab", "../jsp/inventory/computerform.html");
+		modelAndView.addObject("addInventoryTabActive","");
+		modelAndView.addObject("selectedTab", "../../jsp/inventory/manageInventory.jsp");
 		return modelAndView;
 		
 	}
+	//addComputertab
+	@RequestMapping(value = "/accountSetting")
+	public ModelAndView addComputerNav(){
+		modelAndView.setViewName("inventory/invIndex");
+		modelAndView.addObject("accountSettingsTabActive", "active");
+		modelAndView.addObject("manageInventoryTabActive","");
+		modelAndView.addObject("addInventoryTabActive","");
+		modelAndView.addObject("selectedTab", "../../jsp/inventory/accountSettings.jsp");
+		return modelAndView;
+		
+	}
+	@RequestMapping(value = "/addInventory")
+	public ModelAndView addInventoryNav(){
+		modelAndView.setViewName("inventory/invIndex");
+		modelAndView.addObject("accountSettingsTabActive", "");
+		modelAndView.addObject("addInventoryTabActive","active");
+		modelAndView.addObject("manageInventoryTabActive","");
+		modelAndView.addObject("selectedTab", "../../jsp/inventory/addInventoryForm.jsp");
+		return modelAndView;
+
+	}
+
+	/*
 	
 	//addBoard
 	@RequestMapping(value = "/addBoardTab")
@@ -100,5 +104,6 @@ public class InvNavigationController {
 		return modelAndView;
 		
 	}
+	*/
 
 }

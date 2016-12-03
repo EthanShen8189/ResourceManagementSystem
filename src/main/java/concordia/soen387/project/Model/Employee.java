@@ -1,7 +1,7 @@
 package concordia.soen387.project.Model;
 
 
-public class User {
+public class Employee {
 	
 	private String username;
 	private String email;
@@ -11,7 +11,7 @@ public class User {
 	private String password;
 	private long department_id;
 
-	public User() {
+	public Employee() {
 	}
 
 	public String getUsername() {

@@ -44,7 +44,7 @@ __Reservation(Employee) Password:__ : admin<br/>
    <ol>
       <li>Yang Shen 27159390</li>
       <li>Tsang Chi Kit 25692636</li>
-      <li>Van Do</li>
+      <li>Van Do 26526276</li>
       <li>Behrouz Hedayati</li>
    </ol>
 
