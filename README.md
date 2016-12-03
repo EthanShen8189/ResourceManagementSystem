@@ -1,11 +1,11 @@
 ##SOEN387-F16 Group Project <br/>Due Date: Dec 4, 2016
 
 
-__Master Username:__ : admin
+__Master Username:__ : admin<br/>
 __Master Password:__ : admin<br/>
-__Inventory(IT) Username:__ : admin
+__Inventory(IT) Username:__ : admin<br/>
 __Inventory(IT) Password:__ : admin<br/>
-__Reservation(Employee) Username:__ : admin
+__Reservation(Employee) Username:__ : admin<br/>
 __Reservation(Employee) Password:__ : admin<br/>
 
 ###SQL script can be found in /src/main/sql
