@@ -5,15 +5,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-public class NavigationController {
+public class InvNavigationController {
 	
 	private ModelAndView modelAndView = new ModelAndView();
-	//private NavigationBarService navigationBarService = new NavigationBarService();
+	//private InvNavigationBarService invNavigationBarService = new InvNavigationBarService();
 	
 	//accountSettings
 	@RequestMapping(value = "/accountSettingsTab")
 	public ModelAndView accountSettingsNav(){
-		modelAndView.setViewName("index");
+		modelAndView.setViewName("invIndex");
 		modelAndView.addObject("accountSettingsTabActive", "active");
 		modelAndView.addObject("addComputerTabActive","");
 		modelAndView.addObject("addBoardTabActive", "");
@@ -29,7 +29,7 @@ public class NavigationController {
 	//addComputertab
 	@RequestMapping(value = "/addComputerTab")
 	public ModelAndView addComputerNav(){
-		modelAndView.setViewName("index");
+		modelAndView.setViewName("invIndex");
 		modelAndView.addObject("accountSettingsTabActive", "");
 		modelAndView.addObject("addComputerTabActive","active");
 		modelAndView.addObject("addBoardTabActive", "");
@@ -44,7 +44,7 @@ public class NavigationController {
 	//addBoard
 	@RequestMapping(value = "/addBoardTab")
 	public ModelAndView addBoardNav(){
-		modelAndView.setViewName("index");
+		modelAndView.setViewName("invIndex");
 		modelAndView.addObject("accountSettingsTabActive", "");
 		modelAndView.addObject("addComputerTabActive","");
 		modelAndView.addObject("addBoardTabActive", "active");
@@ -59,7 +59,7 @@ public class NavigationController {
 	//addRoom
 	@RequestMapping(value = "/addRoomTab")
 	public ModelAndView addRoomNav(){
-		modelAndView.setViewName("index");
+		modelAndView.setViewName("invIndex");
 		modelAndView.addObject("accountSettingsTabActive", "");
 		modelAndView.addObject("addComputerTabActive","");
 		modelAndView.addObject("addBoardTabActive", "");
@@ -74,7 +74,7 @@ public class NavigationController {
 	//addProjector
 	@RequestMapping(value = "/addProjectorTab")
 	public ModelAndView addProjectorNav(){
-		modelAndView.setViewName("index");
+		modelAndView.setViewName("invIndex");
 		modelAndView.addObject("accountSettingsTabActive", "");
 		modelAndView.addObject("addComputerTabActive","");
 		modelAndView.addObject("addBoardTabActive", "");
@@ -89,7 +89,7 @@ public class NavigationController {
 	//editItem
 	@RequestMapping(value = "/editItemTab")
 	public ModelAndView editItemNav(){
-		modelAndView.setViewName("index");
+		modelAndView.setViewName("invIndex");
 		modelAndView.addObject("accountSettingsTabActive", "");
 		modelAndView.addObject("addComputerTabActive","");
 		modelAndView.addObject("addBoardTabActive", "");
