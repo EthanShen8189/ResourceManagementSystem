@@ -51,7 +51,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
 
     @Override
     public Employee getUserById(String username, int departID) {
-        String sql = "SELECT * FROM emplyee WHERE username=" + username + "AND department_id=" + departID;
+        String sql = "SELECT * FROM employee WHERE username=" + "\'"+username+"\'"+" AND department_id=" + departID;
         return jdbcTemplate.query(sql, new ResultSetExtractor<Employee>() {
             @Override
             public Employee extractData(ResultSet resultSet) throws SQLException, DataAccessException {

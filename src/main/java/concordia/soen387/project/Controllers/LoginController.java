@@ -20,8 +20,9 @@ public class LoginController {
         return "login";
     }
 
-    @RequestMapping(value="/home" ,method = RequestMethod.POST, params = {"username", "password"})
-    public String handleLoginRequest(@RequestParam String username,
+    @RequestMapping(value="/home" ,method = RequestMethod.POST, params = {"employeeType","username", "password"})
+    public String handleLoginRequest(@RequestParam String employeeType,
+                                     @RequestParam String username,
                                      @RequestParam String password,
                                      ModelMap model){
         if(username.equals("") || password.equals("")){
@@ -29,21 +30,20 @@ public class LoginController {
             return "login";
 
         }else{
-            if(loginService.loginValidation(username, password)) {
-                model.put("name", username);
+            String name = loginService.loginValidation(employeeType, username, password);
+            if(!name.equalsIgnoreCase("") && employeeType.toLowerCase().contains("admin")) {
+                model.put("name", name);
                 return "inventory/invIndex";
+
+            }else if(!name.equalsIgnoreCase("") && employeeType.toLowerCase().contains("employee")){
+                model.put("name", name);
+                return "reservation/resIndex";
+
             }else{
                 model.put("errorMsg", "Invalid Credential!");
                 return "login";
             }
         }
-
-    }
-
-    @RequestMapping(value="/login" ,method = RequestMethod.POST, params = {})
-    public String backToSearchPage(ModelMap model){
-        model.put("name", "admin");
-        return "index";
 
     }
 
