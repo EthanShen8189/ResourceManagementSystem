@@ -8,15 +8,10 @@ import java.util.List;
  * Created by EthanShen on 2016-12-02.
  */
 public interface ReservationDao {
-
     void addReservation(Reservation Reservation);
-
     void updateReservation(Reservation Reservation);
-
     void deleteReservation(int ReservationId);
-
     Reservation getReservationById(int ReservationId);
-
     List<Reservation> getAllReservation();
     
 }
