@@ -34,11 +34,8 @@ public class EmployeeDaoImpl implements EmployeeDao {
 
     @Override
     public void updateUser(Employee employee) {
-<<<<<<< HEAD
         if(!employee.getUsername().equalsIgnoreCase("")){
-=======
-        if(!employee.getUsername().equalsIgnoreCase("")){
->>>>>>> master
+
             String sql = "UPDATE employee SET username=?, email=?, first_name=?, " +
                     "last_name=?, password_encrypted=?, phone=?, department_id=? WHERE username=? AND department_id=?";
             jdbcTemplate.update(sql, employee.getUsername(), employee.getEmail(), employee.getFirst_name(),
@@ -55,11 +52,8 @@ public class EmployeeDaoImpl implements EmployeeDao {
 
     @Override
     public Employee getUserById(String username, int departID) {
-<<<<<<< HEAD
         String sql = "SELECT * FROM employee WHERE username=" + "\'"+username+"\'"+" AND department_id=" + departID;
-=======
-        String sql = "SELECT * FROM employee WHERE username=" + "\'"+username+"\'"+" AND department_id=" + departID;
->>>>>>> master
+
         return jdbcTemplate.query(sql, new ResultSetExtractor<Employee>() {
             @Override
             public Employee extractData(ResultSet resultSet) throws SQLException, DataAccessException {
@@ -73,7 +67,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
     }
 
     @Override
-    public List<Employee> getAllReservation() {
+    public List<Employee> getAllEmployee() {
         String sql = "SELECT * FROM employee";
         List<Employee> employeeList = jdbcTemplate.query(sql, new RowMapper<Employee>() {
             @Override
