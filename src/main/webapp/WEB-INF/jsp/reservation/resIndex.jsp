@@ -17,11 +17,10 @@
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
-                        <li class=${homeTabActive}><a href="${pageContext.request.contextPath}/homeTab">Home</a></li> <!-- inventoryIndex.jsp -->
-                        <li class=${manageInventoryTabActive}><a href="${pageContext.request.contextPath}/manageInventoryTab">Manage Inventory</a></li> <!-- manageInventory.jsp -->
-                        <li class=${accountSettingsTabActive}><a href="${pageContext.request.contextPath}/accountSettingsTab">Account Settings</a></li> <!-- accountSettings.jsp -->
-                        <li class=${addInventoryTabActive}><a href="${pageContext.request.contextPath}/addInventoryTab">Add Inventory</a></li> <!-- addInventory.jsp -->
-                        <li class=${editItemTabActive}><a href="${pageContext.request.contextPath}/editItemTab">Edit Item</a></li> <!-- editItem.jsp -->
+                        <li class=${addReservationTabActive}><a href="${pageContext.request.contextPath}/reservationsTab">My Reservations</a></li> <!-- my-reservation.jsp -->
+                        <li class=${addReservationTabActive}><a href="${pageContext.request.contextPath}/addReservationTab">Add Reservation</a></li> <!-- search.jsp -->
+                        <li class=${accountSettingsTabActive}><a href="${pageContext.request.contextPath}/accountSettings">Account Settings</a></li> <!-- accountSettings.jsp -->
+                         
                     </ul>
                 </div><!-- /.navbar-collapse -->
             </div><!-- /.container-fluid -->
