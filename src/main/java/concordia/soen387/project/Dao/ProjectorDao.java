@@ -12,6 +12,6 @@ public interface ProjectorDao {
 	void addProjector(Projector projector);
 	void updateProjector(Projector projector);
 	void deleteProjector(int id);
-	Projector getProjectorById(int id);
+	Projector getProjectorById(long id);
 	List<Projector> getAllProjectors();
 }

@@ -1,11 +1,13 @@
 package concordia.soen387.project.Services;
 
-import concordia.soen387.project.Dao.ResourceDao;
-import concordia.soen387.project.Model.Resource;
+import concordia.soen387.project.Dao.*;
+import concordia.soen387.project.Model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.web.servlet.ModelAndView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -17,12 +19,28 @@ public class ResourceService {
     @Autowired
     static ResourceDao resourceDao;
 
+    @Autowired
+    static ComputerDao computerDao;
+
+    @Autowired
+    static ComputerOsDao computerOsDao;
+
+    @Autowired
+    static ProjectorDao projectorDao;
+
+    @Autowired
+    static RoomDao roomDao;
+
     static {
         if(context==null){
             context = new ClassPathXmlApplicationContext("Spring-Module.xml");
         }
-        if(resourceDao == null){
+        if(resourceDao == null || computerDao == null || computerOsDao ==null || projectorDao==null || roomDao == null){
             resourceDao = (ResourceDao) context.getBean("resourceDao");
+            computerDao = (ComputerDao) context.getBean("computerDao");
+            computerOsDao = (ComputerOsDao) context.getBean("computerOsDao");
+            projectorDao = (ProjectorDao) context.getBean("projectorDao");
+            roomDao = (RoomDao) context.getBean("roomDao");
         }
     }
 
@@ -41,4 +59,35 @@ public class ResourceService {
     public void updateResource(Resource resource){
         resourceDao.updateResource(resource);
     }
+
+    public Computer getComputerById(long computerId){
+        return computerDao.getComputerById(computerId);
+    }
+
+    public void updateComputer(Computer computer){
+        computerDao.updateComputer(computer);
+    }
+
+    public List<ComputerOs> getAllComputerOs(){
+        return computerOsDao.getAllComputerOs();
+    }
+
+    public Projector getProjectorById(long projectID){
+        return projectorDao.getProjectorById(projectID);
+    }
+
+    public void updateProjector(Projector projector){
+        projectorDao.updateProjector(projector);
+    }
+
+    public Room getRoomById(int roomId){
+        return roomDao.getRoomById(roomId);
+    }
+
+    public void updateRoom(Room room){
+        roomDao.updateRoom(room);
+    }
+
+
+
 }

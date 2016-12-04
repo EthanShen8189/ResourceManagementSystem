@@ -1,21 +1,24 @@
 package concordia.soen387.project.Controllers;
 
-import concordia.soen387.project.Model.Resource;
+import concordia.soen387.project.Model.*;
+import concordia.soen387.project.Services.ResourceService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 public class InvViewController {
 	
 	private ModelAndView modelAndView = new ModelAndView();
-	//private InvNavigationBarService invNavigationBarService = new InvNavigationBarService();
-	
-	//accountSettings
+	private ResourceService resourceService = new ResourceService();
+
 	@RequestMapping(value = "/manageInventory")
-	public ModelAndView manageInventory(ArrayList<Resource> resourceArrayList, String msg){
+	public ModelAndView manageInventoryTab(ArrayList<Resource> resourceArrayList, String msg){
 		modelAndView.setViewName("inventory/invIndex");
 		modelAndView.addObject("manageInventoryTabActive", "active");
 		modelAndView.addObject("accountSettingsTabActive", "");
@@ -30,9 +33,9 @@ public class InvViewController {
 		return modelAndView;
 		
 	}
-	//addComputertab
+
 	@RequestMapping(value = "/accountSetting")
-	public ModelAndView accountSetting(){
+	public ModelAndView accountSettingTab(){
 		modelAndView.setViewName("inventory/invIndex");
 		modelAndView.addObject("accountSettingsTabActive", "active");
 		modelAndView.addObject("manageInventoryTabActive","");
@@ -42,7 +45,7 @@ public class InvViewController {
 		
 	}
 	@RequestMapping(value = "/addInventory")
-	public ModelAndView addInventory(){
+	public ModelAndView addInventoryTab(){
 		modelAndView.setViewName("inventory/invIndex");
 		modelAndView.addObject("accountSettingsTabActive", "");
 		modelAndView.addObject("addInventoryTabActive","active");
@@ -52,67 +55,49 @@ public class InvViewController {
 
 	}
 
-	/*
-	
-	//addBoard
-	@RequestMapping(value = "/addBoardTab")
-	public ModelAndView addBoardNav(){
-		modelAndView.setViewName("invIndex");
-		modelAndView.addObject("accountSettingsTabActive", "");
-		modelAndView.addObject("addComputerTabActive","");
-		modelAndView.addObject("addBoardTabActive", "active");
-		modelAndView.addObject("addRoomTabActive","");
-		modelAndView.addObject("addProjectorTabActive","");
-		modelAndView.addObject("editItemTabActive", "");
-		modelAndView.addObject("selectedTab", "../jsp/inventory/boardform.jsp");
+	@RequestMapping(value = "/editResource", method = RequestMethod.POST, params = {"editParam", "resourceId"})
+	public ModelAndView updateResourceView(@RequestParam String editParam, @RequestParam String resourceId){
+		String resourceDesc;
+		long resourceUID;
+		if(!editParam.equals("")) {
+			resourceDesc = editParam.substring(0, editParam.indexOf("/"));
+			resourceUID = Long.parseLong(editParam.substring(editParam.indexOf("/") + 1));
+			if(resourceDesc.toLowerCase().contains("computer") && resourceUID > 0){
+				List<Computer> computerList = new ArrayList<>();
+				List<ComputerOs> osList = resourceService.getAllComputerOs();
+				Resource resource = resourceService.getResourceByID(Long.parseLong(resourceId));
+                computerList.add(resourceService.getComputerById(resourceUID));
+
+				modelAndView.setViewName("inventory/invIndex");
+				modelAndView.addObject("resourceId", resourceId);
+				modelAndView.addObject("movableCheck", resource.getMovable());
+				modelAndView.addObject("computer", computerList);
+				modelAndView.addObject("osList", osList);
+				modelAndView.addObject("selectedTab", "../../jsp/inventory/editComputer.jsp");
+			}else if(resourceDesc.toLowerCase().contains("projector") && resourceUID > 0){
+				List<Projector> projectorList = new ArrayList<>();
+				projectorList.add(resourceService.getProjectorById(resourceUID));
+				Resource resource = resourceService.getResourceByID(Long.parseLong(resourceId));
+
+				modelAndView.setViewName("inventory/invIndex");
+				modelAndView.addObject("resourceId", resourceId);
+				modelAndView.addObject("movableCheck", resource.getMovable());
+				modelAndView.addObject("projector", projectorList);
+				modelAndView.addObject("selectedTab", "../../jsp/inventory/editProjector.jsp");
+			}else if(resourceDesc.toLowerCase().contains("room") && resourceUID > 0){
+				List<Room> roomList = new ArrayList<>();
+				roomList.add(resourceService.getRoomById((int) resourceUID));
+				Resource resource = resourceService.getResourceByID(Long.parseLong(resourceId));
+
+				modelAndView.setViewName("inventory/invIndex");
+				modelAndView.addObject("resourceId", resourceId);
+				modelAndView.addObject("movableCheck", resource.getMovable());
+				modelAndView.addObject("room", roomList);
+				modelAndView.addObject("selectedTab", "../../jsp/inventory/editRoom.jsp");
+			}
+		}
 		return modelAndView;
 		
 	}
-	
-	//addRoom
-	@RequestMapping(value = "/addRoomTab")
-	public ModelAndView addRoomNav(){
-		modelAndView.setViewName("invIndex");
-		modelAndView.addObject("accountSettingsTabActive", "");
-		modelAndView.addObject("addComputerTabActive","");
-		modelAndView.addObject("addBoardTabActive", "");
-		modelAndView.addObject("addRoomTabActive","active");
-		modelAndView.addObject("addProjectorTabActive","");
-		modelAndView.addObject("editItemTabActive", "");
-		modelAndView.addObject("selectedTab", "../jsp/inventory/roomform.jsp");
-		return modelAndView;
-		
-	}
-	
-	//addProjector
-	@RequestMapping(value = "/addProjectorTab")
-	public ModelAndView addProjectorNav(){
-		modelAndView.setViewName("invIndex");
-		modelAndView.addObject("accountSettingsTabActive", "");
-		modelAndView.addObject("addComputerTabActive","");
-		modelAndView.addObject("addBoardTabActive", "");
-		modelAndView.addObject("addRoomTabActive","active");
-		modelAndView.addObject("addProjectorTabActive","active");
-		modelAndView.addObject("editItemTabActive", "");
-		modelAndView.addObject("selectedTab", "../jsp/inventory/projectorform.jsp");
-		return modelAndView;
-		
-	}
-	
-	//editItem
-	@RequestMapping(value = "/editItemTab")
-	public ModelAndView editItemNav(){
-		modelAndView.setViewName("invIndex");
-		modelAndView.addObject("accountSettingsTabActive", "");
-		modelAndView.addObject("addComputerTabActive","");
-		modelAndView.addObject("addBoardTabActive", "");
-		modelAndView.addObject("addRoomTabActive","");
-		modelAndView.addObject("addProjectorTabActive","");
-		modelAndView.addObject("editItemTabActive", "active");
-		modelAndView.addObject("selectedTab", "../jsp/inventory/editItem.jsp");
-		return modelAndView;
-		
-	}
-	*/
 
 }

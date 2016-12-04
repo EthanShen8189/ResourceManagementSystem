@@ -12,7 +12,7 @@ public interface ComputerDao {
 	void addComputer(Computer computer);
 	void updateComputer(Computer computer);
 	void deleteComputer(int id);
-	Computer getComputerById(int id);
+	Computer getComputerById(long id);
 	List<Computer> getAllComputers();
 
 }

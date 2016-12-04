@@ -5,7 +5,7 @@ public class Computer {
 	private int id;
 	private String machine_type;
 	private String hostname;
-	private int operating_system_id;
+	private long operating_system_id;
 	private String manufacturer;
 	private String model;
 	private boolean wireless_networking;
@@ -16,9 +16,11 @@ public class Computer {
 	private boolean hdmi_output;
 	private boolean dvi_output;
 	private boolean vga_output;
-	
+
+	public Computer(){}
+
 	public Computer(int id, String machine_type, String hostname,
-			int operating_system_id, String manufacturer,
+					long operating_system_id, String manufacturer,
 			String model, boolean wireless_networking, boolean wired_networking,
 					boolean speakers, boolean keyboard, boolean mouse, boolean hdmi_output,
 					boolean dvi_output, boolean vga_output){
@@ -38,9 +40,6 @@ public class Computer {
 		this.vga_output = vga_output;
 	}
 
-	public Computer() {
-		// TODO Auto-generated constructor stub
-	}
 
 	public int getId() {
 		return id;
@@ -66,11 +65,11 @@ public class Computer {
 		this.hostname = hostname;
 	}
 
-	public int getOperating_system_id() {
+	public long getOperating_system_id() {
 		return operating_system_id;
 	}
 
-	public void setOperating_system_id(int operating_system_id) {
+	public void setOperating_system_id(long operating_system_id) {
 		this.operating_system_id = operating_system_id;
 	}
 

@@ -52,7 +52,7 @@ public class ProjectorDaoImpl implements ProjectorDao{
 	}
 
 	@Override
-	public Projector getProjectorById(int id) {
+	public Projector getProjectorById(long id) {
 		String sql = "SELECT * FROM projector WHERE id=" + id;
         return jdbcTemplate.query(sql, new ResultSetExtractor<Projector>() {
             @Override

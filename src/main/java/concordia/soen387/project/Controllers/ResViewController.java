@@ -7,8 +7,7 @@ public class ResViewController {
 	
 	private ModelAndView modelAndView = new ModelAndView();
 	//private ResNavigationBarService resNavigationBarService = new ResNavigationBarService();
-	
-	//accountSettings
+
 	@RequestMapping(value = "/accountSettingsTab")
 	public ModelAndView accountSettingsNav(){
 		modelAndView.setViewName("resIndex");
@@ -19,8 +18,7 @@ public class ResViewController {
 		return modelAndView;
 		
 	}
-	
-	//reservationsTab
+
 	@RequestMapping(value = "/reservationsTab")
 	public ModelAndView reservationsNav(){
 		modelAndView.setViewName("resIndex");
@@ -31,9 +29,7 @@ public class ResViewController {
 		return modelAndView;
 		
 	}
-	
-	
-	//addreservationsTab
+
 	@RequestMapping(value = "/addReservationTab")
 	public ModelAndView addReservationNav(){
 		modelAndView.setViewName("resIndex");
