@@ -17,8 +17,6 @@ public interface ReservationDao {
 
     Reservation getReservationById(int ReservationId);
 
-    Reservation getLastestReservation();
-
     List<Reservation> getAllReservation();
     
 }

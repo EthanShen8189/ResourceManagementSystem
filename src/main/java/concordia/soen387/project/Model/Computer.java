@@ -38,6 +38,10 @@ public class Computer {
 		this.vga_output = vga_output;
 	}
 
+	public Computer() {
+		// TODO Auto-generated constructor stub
+	}
+
 	public int getId() {
 		return id;
 	}

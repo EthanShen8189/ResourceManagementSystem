@@ -19,6 +19,10 @@ public class Reservation {
 		this.user_username = user_username;
 	}
 
+	public Reservation() {
+		// TODO Auto-generated constructor stub
+	}
+
 	public int getId() {
 		return id;
 	}

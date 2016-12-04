@@ -11,6 +11,10 @@ public class UserRole {
 		this.user_role_human_readable = user_role_human_readable;
 	}
 
+	public UserRole() {
+		// TODO Auto-generated constructor stub
+	}
+
 	public int getId() {
 		return id;
 	}

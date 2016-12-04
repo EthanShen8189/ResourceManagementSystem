@@ -12,7 +12,11 @@ public class Building {
         this.id = id;
     }
 
-    public String getAddress() {
+    public Building() {
+		// TODO Auto-generated constructor stub
+	}
+
+	public String getAddress() {
         return address;
     }
 

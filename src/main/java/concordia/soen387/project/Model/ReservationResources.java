@@ -12,6 +12,10 @@ public class ReservationResources {
 		this.resource_id = resource_id;
 	}
 
+	public ReservationResources() {
+		// TODO Auto-generated constructor stub
+	}
+
 	public int getReservation_id() {
 		return reservation_id;
 	}
