@@ -1,6 +1,5 @@
 package concordia.soen387.project.Controllers;
 
-import com.sun.org.apache.xpath.internal.operations.Mod;
 import concordia.soen387.project.Model.*;
 import concordia.soen387.project.Services.InvManagementService;
 import org.springframework.stereotype.Controller;
@@ -18,7 +17,7 @@ import java.util.ArrayList;
 @Controller
 public class InvManagementController {
 
-    private InvViewController invViewController = new InvViewController();
+    private InvViewController invViewController = InvViewController.getInvViewController();
     private InvManagementService invManagementService = new InvManagementService();
 
     @RequestMapping(value = "/searchInv", method = RequestMethod.GET, params = {"search"})
@@ -302,5 +301,23 @@ public class InvManagementController {
             e.printStackTrace();
             return invViewController.addRoomPage("Something Wrong, Please try again.");
         }
+    }
+
+    @RequestMapping(value = "/changePassword", method = RequestMethod.POST)
+    public ModelAndView changePassword(@RequestParam String username, @RequestParam String departmentId,
+                                       @RequestParam String oldPassword, @RequestParam String newPassword,
+                                       @RequestParam String confirmPassword){
+        if(!confirmPassword.equals(newPassword)){
+            return invViewController.accountSettingTab("","Confirm Password is not matching with new password.");
+        }else if(oldPassword.equals(newPassword)){
+            return invViewController.accountSettingTab("","New password cannot be the same as old password");
+        }else if(confirmPassword.equals(newPassword)){
+            Employee employee = invManagementService.getEmployeeById(username, Integer.parseInt(departmentId));
+            employee.setPassword(newPassword);
+
+            invManagementService.updateEmployee(employee);
+            return invViewController.accountSettingTab("Password Changed!","");
+        }
+        return invViewController.accountSettingTab("","Something is wrong, please try again.");
     }
 }

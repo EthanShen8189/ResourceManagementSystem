@@ -28,13 +28,15 @@ public class InvManagementService {
     static WhiteBoardDao whiteBoardDao;
     @Autowired
     static BuildingDao buildingDao;
+    @Autowired
+    static EmployeeDao employeeDao;
 
     static {
         if(context==null){
             context = new ClassPathXmlApplicationContext("Spring-Module.xml");
         }
         if(resourceDao == null || computerDao == null || computerOsDao ==null || projectorDao==null || roomDao == null ||
-                whiteBoardDao ==null || buildingDao == null){
+                whiteBoardDao ==null || buildingDao == null || employeeDao == null){
             resourceDao = (ResourceDao) context.getBean("resourceDao");
             computerDao = (ComputerDao) context.getBean("computerDao");
             computerOsDao = (ComputerOsDao) context.getBean("computerOsDao");
@@ -42,6 +44,7 @@ public class InvManagementService {
             roomDao = (RoomDao) context.getBean("roomDao");
             whiteBoardDao = (WhiteBoardDao) context.getBean("whiteBoardDao");
             buildingDao = (BuildingDao) context.getBean("buildingDao");
+            employeeDao = (EmployeeDao) context.getBean("employeeDao");
         }
     }
 
@@ -132,5 +135,13 @@ public class InvManagementService {
 
     public void insertRoom(Room room) {
         roomDao.addRoom(room);
+    }
+
+    public Employee getEmployeeById(String username, int departmentId) {
+       return employeeDao.getUserById(username,departmentId);
+    }
+
+    public void updateEmployee(Employee employee) {
+        employeeDao.updateUser(employee);
     }
 }

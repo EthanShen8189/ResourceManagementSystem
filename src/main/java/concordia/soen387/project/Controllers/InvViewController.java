@@ -14,13 +14,38 @@ import java.util.Objects;
 
 @Controller
 public class InvViewController {
-	
+
+	private static InvViewController invViewController = new InvViewController();
 	private ModelAndView modelAndView = new ModelAndView();
 	private InvManagementService invManagementService = new InvManagementService();
+	private static String userName;
+	private static String firstName;
+	private static long department_id;
+
+	private InvViewController(){}
+
+	static InvViewController getInvViewController(){
+		return invViewController;
+	}
+
+	public void setUserName(String userName) {
+		InvViewController.userName = userName;
+	}
+
+	public void setFirstName(String firstName) {
+		InvViewController.firstName = firstName;
+	}
+
+	public void setDepartment_id(long department_id) {
+		InvViewController.department_id = department_id;
+	}
 
 	@RequestMapping(value = "/manageInventory")
 	public ModelAndView manageInventoryTab(ArrayList<Resource> resourceArrayList, String msg){
 		modelAndView.setViewName("inventory/invIndex");
+		modelAndView.addObject("name", firstName);
+		modelAndView.addObject("username", userName);
+		modelAndView.addObject("departmentId", department_id);
 		modelAndView.addObject("manageInventoryTabActive", "active");
 		modelAndView.addObject("accountSettingsTabActive", "");
 		modelAndView.addObject("addInventoryTabActive","");
@@ -36,11 +61,16 @@ public class InvViewController {
 	}
 
 	@RequestMapping(value = "/accountSetting")
-	public ModelAndView accountSettingTab(){
+	public ModelAndView accountSettingTab(String successMsg, String errorMsg){
 		modelAndView.setViewName("inventory/invIndex");
+		modelAndView.addObject("name", firstName);
+		modelAndView.addObject("username", userName);
+		modelAndView.addObject("departmentId", department_id);
 		modelAndView.addObject("accountSettingsTabActive", "active");
 		modelAndView.addObject("manageInventoryTabActive","");
 		modelAndView.addObject("addInventoryTabActive","");
+		modelAndView.addObject("successMsg", successMsg);
+		modelAndView.addObject("errorMsg", errorMsg);
 		modelAndView.addObject("selectedTab", "../../jsp/inventory/accountSettings.jsp");
 		return modelAndView;
 		
@@ -48,6 +78,9 @@ public class InvViewController {
 	@RequestMapping(value = "/addInventory")
 	public ModelAndView addInventoryTab(String url, String type, String msg){
 		modelAndView.setViewName("inventory/invIndex");
+		modelAndView.addObject("name", firstName);
+		modelAndView.addObject("username", userName);
+		modelAndView.addObject("departmentId", department_id);
 		modelAndView.addObject("accountSettingsTabActive", "");
 		modelAndView.addObject("addInventoryTabActive","active");
 		modelAndView.addObject("manageInventoryTabActive","");

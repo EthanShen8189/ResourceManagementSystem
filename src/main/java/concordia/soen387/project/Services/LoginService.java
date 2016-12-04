@@ -35,7 +35,7 @@ public class LoginService {
             employee = employeeDao.getUserById(username, 100);
             if(employee != null) {
                 if (employee.getPassword().equals(password)) {
-                    return employee.getUsername()+":"+employee.getFirst_name();
+                    return employee.getUsername()+":"+employee.getFirst_name()+"+"+employee.getDepartment_id();
                 }
             }
 
@@ -43,7 +43,7 @@ public class LoginService {
             employee = employeeDao.getUserById(username, 200);
             if(employee != null) {
                 if (employee.getPassword().equals(password)) {
-                    return employee.getUsername()+":"+employee.getFirst_name();
+                    return employee.getUsername()+":"+employee.getFirst_name()+"+"+employee.getDepartment_id();
                 }
             }
         }
