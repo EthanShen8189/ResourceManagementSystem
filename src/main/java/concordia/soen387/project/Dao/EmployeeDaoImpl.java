@@ -34,7 +34,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
 
     @Override
     public void updateUser(Employee employee) {
-        if(!(employee.getUsername().equalsIgnoreCase("") && employee.getDepartment_id()>0)){
+        if(!employee.getUsername().equalsIgnoreCase("")){
             String sql = "UPDATE employee SET username=?, email=?, first_name=?, " +
                     "last_name=?, password_encrypted=?, phone=?, department_id=? WHERE username=? AND department_id=?";
             jdbcTemplate.update(sql, employee.getUsername(), employee.getEmail(), employee.getFirst_name(),

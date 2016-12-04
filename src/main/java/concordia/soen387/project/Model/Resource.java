@@ -3,14 +3,16 @@ package concordia.soen387.project.Model;
 public class Resource {
 
 	private int id;
-	private int available;
+	private boolean available;
 	private String description;
-	private int movable;
+	private boolean movable;
 	private String name;
 	private int resourceUID;
 
-	public Resource(int id, int available, String description,
-					int movable, String name){
+	public Resource(){}
+
+	public Resource(int id, boolean available, String description,
+					boolean movable, String name){
 		this.id = id;
 		this.available = available;
 		this.description = description;
@@ -26,11 +28,11 @@ public class Resource {
 		this.id = id;
 	}
 
-	public int getAvailable() {
+	public boolean getAvailable() {
 		return available;
 	}
 
-	public void setAvailable(int available) {
+	public void setAvailable(boolean available) {
 		this.available = available;
 	}
 
@@ -42,11 +44,11 @@ public class Resource {
 		this.description = description;
 	}
 
-	public int getMovable() {
+	public boolean getMovable() {
 		return movable;
 	}
 
-	public void setMovable(int movable) {
+	public void setMovable(boolean movable) {
 		this.movable = movable;
 	}
 

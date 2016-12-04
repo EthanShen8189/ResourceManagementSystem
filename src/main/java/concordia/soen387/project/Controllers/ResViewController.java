@@ -3,7 +3,7 @@ package concordia.soen387.project.Controllers;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-public class ResNavigationController {
+public class ResViewController {
 	
 	private ModelAndView modelAndView = new ModelAndView();
 	//private ResNavigationBarService resNavigationBarService = new ResNavigationBarService();

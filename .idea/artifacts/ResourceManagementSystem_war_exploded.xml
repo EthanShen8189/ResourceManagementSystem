@@ -1,6 +1,6 @@
 <component name="ArtifactManager">
   <artifact type="exploded-war" name="ResourceManagementSystem:war exploded">
-    <output-path>$PROJECT_DIR$/target/Soen387-1.0-Project</output-path>
+    <output-path>$PROJECT_DIR$/target/ResourceManagementSystem-1.0-Project</output-path>
     <root id="root">
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
@@ -30,7 +30,7 @@
         </element>
       </element>
       <element id="directory" name="META-INF">
-        <element id="file-copy" path="$PROJECT_DIR$/target/Soen387-1.0-Project/META-INF/MANIFEST.MF" />
+        <element id="file-copy" path="$PROJECT_DIR$/target/ResourceManagementSystem-1.0-Project/META-INF/MANIFEST.MF" />
       </element>
       <element id="javaee-facet-resources" facet="ResourceManagementSystem/web/Web" />
     </root>

@@ -11,4 +11,8 @@
     <bean id="employeeDao" class="concordia.soen387.project.Dao.EmployeeDaoImpl">
         <constructor-arg ref="dataSource"/>
     </bean>
+
+    <bean id="resourceDao" class="concordia.soen387.project.Dao.ResourceDaoImpl">
+        <constructor-arg ref="dataSource"/>
+    </bean>
 </beans>
