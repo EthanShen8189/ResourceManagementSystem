@@ -14,4 +14,5 @@ public interface RoomDao {
 	void deleteRoom(int id);
 	Room getRoomById(int id);
 	List<Room> getAllRooms();
+	Room getLastIndexRoom();
 }

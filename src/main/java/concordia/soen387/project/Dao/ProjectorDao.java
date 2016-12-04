@@ -14,4 +14,5 @@ public interface ProjectorDao {
 	void deleteProjector(int id);
 	Projector getProjectorById(long id);
 	List<Projector> getAllProjectors();
+	Projector getLastIndexProjector();
 }

@@ -14,5 +14,5 @@ public interface WhiteBoardDao {
 	void deleteWhiteBoard(int id);
 	WhiteBoard getWhiteBoardById(long id);
 	List<WhiteBoard> getAllWhiteBoard();
-
+	WhiteBoard getLastIndexWhiteboard();
 }

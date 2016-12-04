@@ -78,8 +78,22 @@ public class ProjectorDaoImpl implements ProjectorDao{
 
         return buildingList;
 	}
-	
-	
+
+	@Override
+	public Projector getLastIndexProjector() {
+		String sql = "SELECT * FROM projector where id = (select max(id) from projector)";
+		return jdbcTemplate.query(sql, new ResultSetExtractor<Projector>() {
+			@Override
+			public Projector extractData(ResultSet resultSet) throws SQLException, DataAccessException {
+				if(resultSet.next()){
+					return initProjector(resultSet);
+				}
+				return null;
+			}
+		});
+	}
+
+
 	private Projector initProjector(ResultSet resultSet) throws SQLException{
 		Projector projector = new Projector();
 		projector.setDvi_input(resultSet.getBoolean("dvi_input"));

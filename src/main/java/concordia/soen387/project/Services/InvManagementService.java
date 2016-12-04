@@ -109,4 +109,28 @@ public class InvManagementService {
     public void insertComputer(Computer computer) {
         computerDao.addComputer(computer);
     }
+
+    public Projector getLastIndexProjector() {
+       return projectorDao.getLastIndexProjector();
+    }
+
+    public void insertProjector(Projector projector) {
+        projectorDao.addProjector(projector);
+    }
+
+    public WhiteBoard getLastIndexWhiteboard() {
+        return whiteBoardDao.getLastIndexWhiteboard();
+    }
+
+    public void insertWhiteboard(WhiteBoard whiteBoard) {
+        whiteBoardDao.addWhiteBoard(whiteBoard);
+    }
+
+    public Room getLastIndexRoom() {
+        return roomDao.getLastIndexRoom();
+    }
+
+    public void insertRoom(Room room) {
+        roomDao.addRoom(room);
+    }
 }

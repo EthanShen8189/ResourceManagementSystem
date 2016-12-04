@@ -76,7 +76,21 @@ public class RoomDaoImpl implements RoomDao {
 
         return roomList;
 	}
-	
+
+	@Override
+	public Room getLastIndexRoom() {
+		String sql = "SELECT * FROM room where id = (select max(id) from room)";
+		return jdbcTemplate.query(sql, new ResultSetExtractor<Room>() {
+			@Override
+			public Room extractData(ResultSet resultSet) throws SQLException, DataAccessException {
+				if(resultSet.next()){
+					return initRoom(resultSet);
+				}
+				return null;
+			}
+		});
+	}
+
 	private Room initRoom(ResultSet resultSet) throws SQLException{
 		Room room = new Room();
 		room.setRoom_number(resultSet.getString("room_number"));

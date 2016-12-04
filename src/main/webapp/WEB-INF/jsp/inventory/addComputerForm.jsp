@@ -130,7 +130,7 @@
 	<div class="form-group">
 		<div class="col-sm-offset-2 col-sm-10">
 			<div class="checkbox">
-				<label><input type="checkbox" name="moveable" name="movable" />Movable</label>
+				<label><input type="checkbox" name="movable"/>Movable</label>
 			</div>
 		</div>
 	</div>

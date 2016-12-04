@@ -75,7 +75,21 @@ public class WhiteBoardDaoImpl implements WhiteBoardDao{
 
         return whiteBoardList;
 	}
-	
+
+	@Override
+	public WhiteBoard getLastIndexWhiteboard() {
+		String sql = "SELECT * FROM whiteboard where id = (select max(id) from whiteboard)";
+		return jdbcTemplate.query(sql, new ResultSetExtractor<WhiteBoard>() {
+			@Override
+			public WhiteBoard extractData(ResultSet resultSet) throws SQLException, DataAccessException {
+				if(resultSet.next()){
+					return initWhiteBoard(resultSet);
+				}
+				return null;
+			}
+		});
+	}
+
 	private WhiteBoard initWhiteBoard(ResultSet resultSet) throws SQLException{
 		WhiteBoard whiteBoard = new WhiteBoard();
 		whiteBoard.setHeight(resultSet.getInt("height"));

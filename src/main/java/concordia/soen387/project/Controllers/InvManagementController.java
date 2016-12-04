@@ -1,5 +1,6 @@
 package concordia.soen387.project.Controllers;
 
+import com.sun.org.apache.xpath.internal.operations.Mod;
 import concordia.soen387.project.Model.*;
 import concordia.soen387.project.Services.InvManagementService;
 import org.springframework.stereotype.Controller;
@@ -209,6 +210,97 @@ public class InvManagementController {
         }catch (Exception e){
             e.printStackTrace();
             return invViewController.addComputerPage("Something Wrong, Please try again.");
+        }
+    }
+
+    @RequestMapping(value = "/AddProjForm", method = RequestMethod.POST)
+    public ModelAndView addProjector(@RequestParam String projectorHeight, @RequestParam String projectorWidth,
+                                     @RequestParam (value = "movable", required = false) String projectorMovable,
+                                     @RequestParam (value = "hdmiin", required = false) String hdmiin,
+                                     @RequestParam (value = "dviin", required = false)String dviin,
+                                     @RequestParam (value = "vgain", required = false)String vgain,
+                                     @RequestParam String description){
+        Projector projector;
+        Resource resource = new Resource();
+
+        try {
+            projector = invManagementService.getLastIndexProjector();
+
+            projector.setId(projector.getId()+1);
+            projector.setHeight(Integer.parseInt(projectorHeight));
+            projector.setWidth(Integer.parseInt(projectorWidth));
+            projector.setDvi_input(!(dviin==null));
+            projector.setDvi_input(!(hdmiin==null));
+            projector.setVga_input(!(vgain==null));
+
+            invManagementService.insertProjector(projector);
+
+            resource.setAvailable(true);
+            resource.setDescription(description);
+            resource.setName("Projector");
+            resource.setResourceUID(projector.getId());
+            resource.setMovable(!(projectorMovable==null));
+
+            invManagementService.insertResource(resource);
+            return invViewController.addProjectorPage("Successfully Added!");
+        }catch (Exception e){
+            e.printStackTrace();
+            return invViewController.addProjectorPage("Something Wrong, Please try again.");
+        }
+
+    }
+
+    @RequestMapping(value = "/addBoardform", method = RequestMethod.POST)
+    public ModelAndView addWhiteboard(@RequestParam String description, @RequestParam String boardWidth,
+                                      @RequestParam String boardHeight, @RequestParam String movable){
+        WhiteBoard whiteBoard;
+        Resource resource = new Resource();
+
+        try {
+            whiteBoard = invManagementService.getLastIndexWhiteboard();
+            whiteBoard.setId(whiteBoard.getId()+1);
+            whiteBoard.setWidth(Integer.parseInt(boardWidth));
+            whiteBoard.setHeight(Integer.parseInt(boardHeight));
+
+            invManagementService.insertWhiteboard(whiteBoard);
+
+            resource.setName("Whiteboard");
+            resource.setDescription(description);
+            resource.setAvailable(true);
+            resource.setMovable(!(movable==null));
+
+            invManagementService.insertResource(resource);
+
+            return invViewController.addWhiteboardPage("Successfully Added!");
+        }catch (Exception e){
+            e.printStackTrace();
+            return invViewController.addWhiteboardPage("Something Wrong, Please try again.");
+        }
+    }
+
+    @RequestMapping(value = "/addRoomform", method = RequestMethod.POST)
+    public ModelAndView addRoom(@RequestParam String roomNumber, @RequestParam String building,@RequestParam String description){
+        Room room;
+        Resource resource = new Resource();
+        try {
+            room = invManagementService.getLastIndexRoom();
+            room.setId(room.getId()+1);
+            room.setRoom_number(roomNumber);
+            room.setBuilding_id(Integer.parseInt(building.substring(0,1)));
+
+            invManagementService.insertRoom(room);
+
+            resource.setMovable(false);
+            resource.setAvailable(true);
+            resource.setDescription(description);
+            resource.setName("Room");
+            resource.setResourceUID((int) room.getId());
+
+            invManagementService.insertResource(resource);
+            return invViewController.addRoomPage("Successfully Added!");
+        }catch (Exception e){
+            e.printStackTrace();
+            return invViewController.addRoomPage("Something Wrong, Please try again.");
         }
     }
 }
