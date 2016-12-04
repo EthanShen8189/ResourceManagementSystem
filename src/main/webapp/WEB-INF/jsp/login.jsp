@@ -3,6 +3,13 @@
     <div class="container">
         <h3>Please Login</h3>
         <form class="input-group" action="<c:url value="/home"/>" method="post">
+            <div class="input-group form-inline">
+                <label for="employeeType">Type</label>
+                <select class="form-control input-sm" name="employeeType" id="employeeType">
+                    <option>IT Admin</option>
+                    <option>Employee</option>
+                </select>
+            </div>
             <div class="input-group">
                 <span class="input-group-addon" id="username-addon">User Name:</span>
                 <input class="form-control" type="text" name="username" id="username" aria-describedby="username-addon"/>

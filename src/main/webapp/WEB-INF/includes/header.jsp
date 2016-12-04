@@ -27,7 +27,7 @@
             <a class="navbar-brand">Resource Management System</a>
         </div>
         <p class="navbar-text navbar-right"><c:if test="${not empty name}">
-            Welcome ${name}
+            Welcome ${name} ${username}
             <a class="btn btn-primary btn-xs" href="${pageContext.request.contextPath}/" role="button">Log out</a>
         </c:if>
         </p>

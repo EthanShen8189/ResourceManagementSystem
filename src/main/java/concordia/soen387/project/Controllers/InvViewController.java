@@ -1,29 +1,38 @@
 package concordia.soen387.project.Controllers;
 
+import concordia.soen387.project.Model.Resource;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.ArrayList;
+
 @Controller
-public class InvNavigationController {
+public class InvViewController {
 	
 	private ModelAndView modelAndView = new ModelAndView();
 	//private InvNavigationBarService invNavigationBarService = new InvNavigationBarService();
 	
 	//accountSettings
 	@RequestMapping(value = "/manageInventory")
-	public ModelAndView accountSettingsNav(){
+	public ModelAndView manageInventory(ArrayList<Resource> resourceArrayList, String msg){
 		modelAndView.setViewName("inventory/invIndex");
 		modelAndView.addObject("manageInventoryTabActive", "active");
 		modelAndView.addObject("accountSettingsTabActive", "");
 		modelAndView.addObject("addInventoryTabActive","");
 		modelAndView.addObject("selectedTab", "../../jsp/inventory/manageInventory.jsp");
+		if(resourceArrayList != null) {
+			modelAndView.addObject("resourceList", resourceArrayList);
+			modelAndView.addObject("errorMsg", msg);
+		}else {
+			modelAndView.addObject("errorMsg", msg);
+		}
 		return modelAndView;
 		
 	}
 	//addComputertab
 	@RequestMapping(value = "/accountSetting")
-	public ModelAndView addComputerNav(){
+	public ModelAndView accountSetting(){
 		modelAndView.setViewName("inventory/invIndex");
 		modelAndView.addObject("accountSettingsTabActive", "active");
 		modelAndView.addObject("manageInventoryTabActive","");
@@ -33,7 +42,7 @@ public class InvNavigationController {
 		
 	}
 	@RequestMapping(value = "/addInventory")
-	public ModelAndView addInventoryNav(){
+	public ModelAndView addInventory(){
 		modelAndView.setViewName("inventory/invIndex");
 		modelAndView.addObject("accountSettingsTabActive", "");
 		modelAndView.addObject("addInventoryTabActive","active");
