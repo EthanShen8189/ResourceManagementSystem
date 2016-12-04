@@ -13,6 +13,6 @@ public interface EmployeeDao {
     void updateUser(Employee employee);
     void deleteUser(String username, int departID);
     Employee getUserById(String username, int departID);
-    List<Employee> getAllReservation();
+    List<Employee> getAllEmployee();
 
 }

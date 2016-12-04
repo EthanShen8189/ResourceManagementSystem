@@ -8,20 +8,20 @@ public class Computer {
 	private int operating_system_id;
 	private String manufacturer;
 	private String model;
-	private int wireless_networking;
-	private int wired_networking;
-	private int speakers;
-	private int keyboard;
-	private int mouse;
-	private int hdmi_output;
-	private int dvi_output;
-	private int vga_output;
+	private boolean wireless_networking;
+	private boolean wired_networking;
+	private boolean speakers;
+	private boolean keyboard;
+	private boolean mouse;
+	private boolean hdmi_output;
+	private boolean dvi_output;
+	private boolean vga_output;
 	
 	public Computer(int id, String machine_type, String hostname,
 			int operating_system_id, String manufacturer,
-			String model, int wireless_networking, int wired_networking,
-			int speakers, int keyboard, int mouse, int hdmi_output,
-			int dvi_output, int vga_output){
+			String model, boolean wireless_networking, boolean wired_networking,
+					boolean speakers, boolean keyboard, boolean mouse, boolean hdmi_output,
+					boolean dvi_output, boolean vga_output){
 		this.id = id;
 		this.machine_type = machine_type;
 		this.hostname = hostname;
@@ -90,67 +90,67 @@ public class Computer {
 		this.model = model;
 	}
 
-	public int getWireless_networking() {
+	public boolean getWireless_networking() {
 		return wireless_networking;
 	}
 
-	public void setWireless_networking(int wireless_networking) {
+	public void setWireless_networking(boolean wireless_networking) {
 		this.wireless_networking = wireless_networking;
 	}
 
-	public int getWired_networking() {
+	public boolean getWired_networking() {
 		return wired_networking;
 	}
 
-	public void setWired_networking(int wired_networking) {
+	public void setWired_networking(boolean wired_networking) {
 		this.wired_networking = wired_networking;
 	}
 
-	public int getSpeakers() {
+	public boolean getSpeakers() {
 		return speakers;
 	}
 
-	public void setSpeakers(int speakers) {
+	public void setSpeakers(boolean speakers) {
 		this.speakers = speakers;
 	}
 
-	public int getKeyboard() {
+	public boolean getKeyboard() {
 		return keyboard;
 	}
 
-	public void setKeyboard(int keyboard) {
+	public void setKeyboard(boolean keyboard) {
 		this.keyboard = keyboard;
 	}
 
-	public int getMouse() {
+	public boolean getMouse() {
 		return mouse;
 	}
 
-	public void setMouse(int mouse) {
+	public void setMouse(boolean mouse) {
 		this.mouse = mouse;
 	}
 
-	public int getHdmi_output() {
+	public boolean getHdmi_output() {
 		return hdmi_output;
 	}
 
-	public void setHdmi_output(int hdmi_output) {
+	public void setHdmi_output(boolean hdmi_output) {
 		this.hdmi_output = hdmi_output;
 	}
 
-	public int getDvi_output() {
+	public boolean getDvi_output() {
 		return dvi_output;
 	}
 
-	public void setDvi_output(int dvi_output) {
+	public void setDvi_output(boolean dvi_output) {
 		this.dvi_output = dvi_output;
 	}
 
-	public int getVga_output() {
+	public boolean getVga_output() {
 		return vga_output;
 	}
 
-	public void setVga_output(int vga_output) {
+	public void setVga_output(boolean vga_output) {
 		this.vga_output = vga_output;
 	}
 	

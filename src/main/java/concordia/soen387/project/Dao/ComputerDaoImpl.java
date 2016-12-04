@@ -87,18 +87,18 @@ public class ComputerDaoImpl implements ComputerDao{
 	
 	private Computer initUser(ResultSet resultSet) throws SQLException{
 		Computer computer = new Computer();
-        computer.setDvi_output(resultSet.getInt("dvi_output"));
-        computer.setHdmi_output(resultSet.getInt("hdmi_ouput"));
+        computer.setDvi_output(resultSet.getBoolean("dvi_output"));
+        computer.setHdmi_output(resultSet.getBoolean("hdmi_ouput"));
         computer.setHostname(resultSet.getString("hostname"));
-        computer.setKeyboard(resultSet.getInt("keyboard"));
+        computer.setKeyboard(resultSet.getBoolean("keyboard"));
         computer.setMachine_type(resultSet.getString("machine_type"));
         computer.setManufacturer(resultSet.getString("manufacturer"));
         computer.setModel(resultSet.getString("model"));
-        computer.setMouse(resultSet.getInt("mouse"));
-        computer.setSpeakers(resultSet.getInt("speakers"));
-        computer.setVga_output(resultSet.getInt("vga_output"));
-        computer.setWired_networking(resultSet.getInt("wired_networking"));
-        computer.setWireless_networking(resultSet.getInt("wireless_networking"));
+        computer.setMouse(resultSet.getBoolean("mouse"));
+        computer.setSpeakers(resultSet.getBoolean("speakers"));
+        computer.setVga_output(resultSet.getBoolean("vga_output"));
+        computer.setWired_networking(resultSet.getBoolean("wired_networking"));
+        computer.setWireless_networking(resultSet.getBoolean("wireless_networking"));
         computer.setId(resultSet.getInt("id"));
         computer.setOperating_system_id(resultSet.getInt("operating_system_id"));
 

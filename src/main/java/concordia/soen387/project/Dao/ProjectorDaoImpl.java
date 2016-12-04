@@ -82,11 +82,11 @@ public class ProjectorDaoImpl implements ProjectorDao{
 	
 	private Projector initProjector(ResultSet resultSet) throws SQLException{
 		Projector projector = new Projector();
-		projector.setDvi_input(resultSet.getInt("dvi_input"));
-		projector.setHdmi_input(resultSet.getInt("hdmi_input"));
+		projector.setDvi_input(resultSet.getBoolean("dvi_input"));
+		projector.setHdmi_input(resultSet.getBoolean("hdmi_input"));
 		projector.setHeight(resultSet.getInt("height"));
 		projector.setWidth(resultSet.getInt("width"));
-		projector.setVga_input(resultSet.getInt("vga_input"));
+		projector.setVga_input(resultSet.getBoolean("vga_input"));
 		projector.setId(resultSet.getInt("id"));
 		return projector;
 	}
