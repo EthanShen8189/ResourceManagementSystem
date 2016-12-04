@@ -17,11 +17,9 @@
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
-                        <li class=${homeTabActive}><a href="${pageContext.request.contextPath}/homeTab">Home</a></li> <!-- inventoryIndex.jsp -->
-                        <li class=${manageInventoryTabActive}><a href="${pageContext.request.contextPath}/manageInventoryTab">Manage Inventory</a></li> <!-- manageInventory.jsp -->
-                        <li class=${accountSettingsTabActive}><a href="${pageContext.request.contextPath}/accountSettingsTab">Account Settings</a></li> <!-- accountSettings.jsp -->
-                        <li class=${addInventoryTabActive}><a href="${pageContext.request.contextPath}/addInventoryTab">Add Inventory</a></li> <!-- addInventory.jsp -->
-                        <li class=${editItemTabActive}><a href="${pageContext.request.contextPath}/editItemTab">Edit Item</a></li> <!-- editItem.jsp -->
+                        <li class=${newReservationPageActive}><a href="${pageContext.request.contextPath}/newReservationPage">New Reservation</a></li> <!-- manageInventory.jsp -->
+                        <li class=${myReservationPageActive}><a href="${pageContext.request.contextPath}/myReservationPage">My Reservations</a></li> <!-- accountSettings.jsp -->
+                        <li class=${profilePageActive}><a href="${pageContext.request.contextPath}/profilePage">Profile</a></li> <!-- addInventory.jsp -->
                     </ul>
                 </div><!-- /.navbar-collapse -->
             </div><!-- /.container-fluid -->
