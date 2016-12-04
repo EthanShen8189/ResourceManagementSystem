@@ -103,7 +103,7 @@ public class InvViewController {
 				modelAndView.addObject("resourceId", resourceId);
 				modelAndView.addObject("movableCheck", resource.getMovable());
 				modelAndView.addObject("whiteboard", whiteBoardList);
-				modelAndView.addObject("selectedTab", "../../jsp/inventory/editRoom.jsp");
+				modelAndView.addObject("selectedTab", "../../jsp/inventory/editWhiteboard.jsp");
 			}
 		}
 		return modelAndView;
