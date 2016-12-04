@@ -2,52 +2,76 @@ package concordia.soen387.project.Model;
 
 
 public class Projector {
-	
-	private int projectorHeight;
-	private int projectorWidth;
-	private int roomNumber;
-	private int hdmiIn;
-	private int dviIn;
-	private int vgaIn;
-	
-	
-	public int getProjectorHeight() {
-		return projectorHeight;
+
+	private int dvi_input;
+	private int hdmi_input;
+	private int height;
+	private int width;
+	private int vga_input;
+	private int id;
+
+	public Projector(){}
+
+	public Projector(int dvi_input, int hdmi_input, int height, int width,
+					 int vga_input, int id){
+		this.dvi_input = dvi_input;
+		this.hdmi_input = hdmi_input;
+		this.height = height;
+		this.width = width;
+		this.vga_input = vga_input;
+		this.id = id;
 	}
-	public void setProjectorHeight(int projectorHeight) {
-		this.projectorHeight = projectorHeight;
+
+	public int getDvi_input() {
+		return dvi_input;
 	}
-	public int getProjectorWidth() {
-		return projectorWidth;
+
+	public void setDvi_input(int dvi_input) {
+		this.dvi_input = dvi_input;
 	}
-	public void setProjectorWidth(int projectorWidth) {
-		this.projectorWidth = projectorWidth;
+
+	public int getHdmi_input() {
+		return hdmi_input;
 	}
-	public int getRoomNumber() {
-		return roomNumber;
+
+	public void setHdmi_input(int hdmi_input) {
+		this.hdmi_input = hdmi_input;
 	}
-	public void setRoomNumber(int roomNumber) {
-		this.roomNumber = roomNumber;
+
+	public int getHeight() {
+		return height;
 	}
-	public int getHdmiIn() {
-		return hdmiIn;
+
+	public void setHeight(int height) {
+		this.height = height;
 	}
-	public void setHdmiIn(int hdmiIn) {
-		this.hdmiIn = hdmiIn;
+
+	public int getWidth() {
+		return width;
 	}
-	public int getDviIn() {
-		return dviIn;
+
+	public void setWidth(int width) {
+		this.width = width;
 	}
-	public void setDviIn(int dviIn) {
-		this.dviIn = dviIn;
+
+	public int getVga_input() {
+		return vga_input;
 	}
-	public int getVgaIn() {
-		return vgaIn;
+
+	public void setVga_input(int vga_input) {
+		this.vga_input = vga_input;
 	}
-	public void setVgaIn(int vgaIn) {
-		this.vgaIn = vgaIn;
+
+	public int getId() {
+		return id;
 	}
-	
-	
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+
+
+
 
 }

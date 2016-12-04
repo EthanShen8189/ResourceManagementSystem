@@ -4,10 +4,10 @@
 
 __Master Username:__ : admin<br/>
 __Master Password:__ : admin<br/>
-__Inventory(IT) Username:__ : admin<br/>
-__Inventory(IT) Password:__ : admin<br/>
-__Reservation(Employee) Username:__ : admin<br/>
-__Reservation(Employee) Password:__ : admin<br/>
+__Inventory(IT) Username:__ : briana_tenn<br/>
+__Inventory(IT) Password:__ : brianacompany<br/>
+__Reservation(Employee) Username:__ : oli_norr<br/>
+__Reservation(Employee) Password:__ : olivercompany<br/>
 
 ###SQL script can be found in /src/main/sql
 ###Team & Members:

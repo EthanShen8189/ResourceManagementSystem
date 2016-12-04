@@ -15,5 +15,4 @@ public interface EmployeeDao {
     Employee getUserById(String username, int departID);
     List<Employee> getAllReservation();
 
-
 }

@@ -5,10 +5,10 @@ public class ComputerOs {
 
 	private int id;
 	private String license;
-	private int os_type;
-	private String version;
+	private String os_type;
+	private int version;
 	
-	public ComputerOs(int id, String license, int os_type, String version){
+	public ComputerOs(int id, String license, String os_type, int version){
 		this.id = id;
 		this.license = license;
 		this.os_type = os_type;
@@ -31,19 +31,19 @@ public class ComputerOs {
 		this.license = license;
 	}
 
-	public int getOs_type() {
+	public String getOs_type() {
 		return os_type;
 	}
 
-	public void setOs_type(int os_type) {
+	public void setOs_type(String os_type) {
 		this.os_type = os_type;
 	}
 
-	public String getVersion() {
+	public int getVersion() {
 		return version;
 	}
 
-	public void setVersion(String version) {
+	public void setVersion(int version) {
 		this.version = version;
 	}
 	
