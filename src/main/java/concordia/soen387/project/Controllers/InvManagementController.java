@@ -143,7 +143,7 @@ public class InvManagementController {
         WhiteBoard whiteBoard;
         Resource resource;
         try{
-            whiteBoard = resourceService.getWhileboardById(Long.parseLong(whiteBoardID));
+            whiteBoard = resourceService.getWhiteBoardById(Long.parseLong(whiteBoardID));
             resource = resourceService.getResourceByID(Long.parseLong(resourceID));
 
             whiteBoard.setWidth(Integer.parseInt(boardWidth));

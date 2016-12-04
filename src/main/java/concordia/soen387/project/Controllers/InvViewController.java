@@ -96,7 +96,7 @@ public class InvViewController {
 				modelAndView.addObject("selectedTab", "../../jsp/inventory/editRoom.jsp");
 			}else if(resourceDesc.toLowerCase().contains("white") && resourceUID > 0){
 				List<WhiteBoard> whiteBoardList = new ArrayList<>();
-				whiteBoardList.add(resourceService.getWhileboardById(resourceUID));
+				whiteBoardList.add(resourceService.getWhiteBoardById(resourceUID));
 				Resource resource = resourceService.getResourceByID(Long.parseLong(resourceId));
 
 				modelAndView.setViewName("inventory/invIndex");
