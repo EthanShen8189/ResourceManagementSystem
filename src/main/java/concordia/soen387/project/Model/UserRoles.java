@@ -12,6 +12,10 @@ public class UserRoles {
 		this.roles_id = roles_id;
 	}
 
+	public UserRoles() {
+		// TODO Auto-generated constructor stub
+	}
+
 	public String getUser_username() {
 		return user_username;
 	}

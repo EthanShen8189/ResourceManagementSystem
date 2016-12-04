@@ -11,6 +11,10 @@ public class Department {
 		this.name = name;
 	}
 
+	public Department() {
+		// TODO Auto-generated constructor stub
+	}
+
 	public int getId() {
 		return id;
 	}

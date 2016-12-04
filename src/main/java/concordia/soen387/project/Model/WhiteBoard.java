@@ -3,36 +3,49 @@ package concordia.soen387.project.Model;
 
 public class WhiteBoard {
 	
-	private int boardHeight;
-	private int boardWidth;
+	private int height;
+	private int width;
 	private int boardRoomNumber;
+	private int id;
 	
+	public WhiteBoard(){}
 	
-	public int getBoardHeight() {
-		return boardHeight;
+
+	public int getHeight() {
+		return height;
 	}
-	
-	public void setBoardHeight(int boardHeight) {
-		this.boardHeight = boardHeight;
+
+	public void setHeight(int height) {
+		this.height = height;
 	}
-	
-	public int getBoardWidth() {
-		return boardWidth;
+
+	public int getWidth() {
+		return width;
 	}
-	
-	public void setBoardWidth(int boardWidth) {
-		this.boardWidth = boardWidth;
+
+	public void setWidth(int width) {
+		this.width = width;
 	}
-	
+
 	public int getBoardRoomNumber() {
 		return boardRoomNumber;
 	}
-	
+
 	public void setBoardRoomNumber(int boardRoomNumber) {
 		this.boardRoomNumber = boardRoomNumber;
 	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
 	
 	
+	
+
 	
 
 }

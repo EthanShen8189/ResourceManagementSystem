@@ -15,6 +15,10 @@ public class ComputerOs {
 		this.version = version;
 	}
 
+	public ComputerOs() {
+		// TODO Auto-generated constructor stub
+	}
+
 	public int getId() {
 		return id;
 	}

@@ -3,17 +3,17 @@ package concordia.soen387.project.Model;
 
 public class Projector {
 
-	private int dvi_input;
-	private int hdmi_input;
+	private boolean dvi_input;
+	private boolean hdmi_input;
 	private int height;
 	private int width;
-	private int vga_input;
+	private boolean vga_input;
 	private int id;
 
 	public Projector(){}
 
-	public Projector(int dvi_input, int hdmi_input, int height, int width,
-					 int vga_input, int id){
+	public Projector(boolean dvi_input, boolean hdmi_input, int height, int width,
+					 boolean vga_input, int id){
 		this.dvi_input = dvi_input;
 		this.hdmi_input = hdmi_input;
 		this.height = height;
@@ -22,19 +22,19 @@ public class Projector {
 		this.id = id;
 	}
 
-	public int getDvi_input() {
+	public boolean getDvi_input() {
 		return dvi_input;
 	}
 
-	public void setDvi_input(int dvi_input) {
+	public void setDvi_input(boolean dvi_input) {
 		this.dvi_input = dvi_input;
 	}
 
-	public int getHdmi_input() {
+	public boolean getHdmi_input() {
 		return hdmi_input;
 	}
 
-	public void setHdmi_input(int hdmi_input) {
+	public void setHdmi_input(boolean hdmi_input) {
 		this.hdmi_input = hdmi_input;
 	}
 
@@ -54,11 +54,11 @@ public class Projector {
 		this.width = width;
 	}
 
-	public int getVga_input() {
+	public boolean getVga_input() {
 		return vga_input;
 	}
 
-	public void setVga_input(int vga_input) {
+	public void setVga_input(boolean vga_input) {
 		this.vga_input = vga_input;
 	}
 
