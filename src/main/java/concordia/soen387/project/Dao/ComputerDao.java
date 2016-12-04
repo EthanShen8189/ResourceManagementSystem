@@ -14,5 +14,6 @@ public interface ComputerDao {
 	void deleteComputer(int id);
 	Computer getComputerById(long id);
 	List<Computer> getAllComputers();
+	Computer getLastIndexComputer();
 
 }

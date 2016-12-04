@@ -13,9 +13,11 @@
 <head>
     <title>Resource Management</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <spring:url value="/resources/core/js/jquery-3.1.1.min.js" var="jqueryJs" />
     <spring:url value="/resources/core/js/bootstrap.min.js" var="bootstrapJs" />
     <spring:url value="/resources/core/css/bootstrap.min.css" var="bootstrapCss" />
     <spring:url value="/resources/core/font-awesome-4.7.0/css/font-awesome.min.css" var="faCss" />
+    <link href="${jqueryJs}" rel="script"/>
     <link href="${bootstrapCss}" rel="stylesheet" />
     <link href="${bootstrapJs}" rel="script"/>
     <link href="${faCss}" rel="stylesheet"/>

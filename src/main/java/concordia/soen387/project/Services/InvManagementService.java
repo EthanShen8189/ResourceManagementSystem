@@ -5,15 +5,13 @@ import concordia.soen387.project.Model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-import org.springframework.web.servlet.ModelAndView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by EthanShen on 2016-12-03.
  */
-public class ResourceService {
+public class InvManagementService {
     static ApplicationContext context;
 
     @Autowired
@@ -28,19 +26,22 @@ public class ResourceService {
     static RoomDao roomDao;
     @Autowired
     static WhiteBoardDao whiteBoardDao;
+    @Autowired
+    static BuildingDao buildingDao;
 
     static {
         if(context==null){
             context = new ClassPathXmlApplicationContext("Spring-Module.xml");
         }
         if(resourceDao == null || computerDao == null || computerOsDao ==null || projectorDao==null || roomDao == null ||
-                whiteBoardDao ==null){
+                whiteBoardDao ==null || buildingDao == null){
             resourceDao = (ResourceDao) context.getBean("resourceDao");
             computerDao = (ComputerDao) context.getBean("computerDao");
             computerOsDao = (ComputerOsDao) context.getBean("computerOsDao");
             projectorDao = (ProjectorDao) context.getBean("projectorDao");
             roomDao = (RoomDao) context.getBean("roomDao");
             whiteBoardDao = (WhiteBoardDao) context.getBean("whiteBoardDao");
+            buildingDao = (BuildingDao) context.getBean("buildingDao");
         }
     }
 
@@ -62,6 +63,10 @@ public class ResourceService {
 
     public Computer getComputerById(long computerId){
         return computerDao.getComputerById(computerId);
+    }
+
+    public Computer getLastIndexComp(){
+        return computerDao.getLastIndexComputer();
     }
 
     public void updateComputer(Computer computer){
@@ -97,5 +102,11 @@ public class ResourceService {
     }
 
 
+    public List<Building> getAllBuilding() {
+        return buildingDao.getAllBuildings();
+    }
 
+    public void insertComputer(Computer computer) {
+        computerDao.addComputer(computer);
+    }
 }

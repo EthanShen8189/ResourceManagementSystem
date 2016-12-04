@@ -1,7 +1,7 @@
 package concordia.soen387.project.Controllers;
 
 import concordia.soen387.project.Model.*;
-import concordia.soen387.project.Services.ResourceService;
+import concordia.soen387.project.Services.InvManagementService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -18,14 +18,14 @@ import java.util.ArrayList;
 public class InvManagementController {
 
     private InvViewController invViewController = new InvViewController();
-    private ResourceService resourceService = new ResourceService();
+    private InvManagementService invManagementService = new InvManagementService();
 
     @RequestMapping(value = "/searchInv", method = RequestMethod.GET, params = {"search"})
     public ModelAndView searchResource(@RequestParam String search){
         ArrayList<Resource> resourceArrayList = new ArrayList<>();
         if(!search.equals("")) {
-            if (resourceService.getResourceByID(Long.parseLong(search)) != null) {
-                resourceArrayList.add(resourceService.getResourceByID(Long.parseLong(search)));
+            if (invManagementService.getResourceByID(Long.parseLong(search)) != null) {
+                resourceArrayList.add(invManagementService.getResourceByID(Long.parseLong(search)));
                 return invViewController.manageInventoryTab(resourceArrayList, "");
             } else {
                 return invViewController.manageInventoryTab(null, "Wrong Resource ID");
@@ -38,7 +38,7 @@ public class InvManagementController {
 
     @RequestMapping(value = "/searchAllResource", method = RequestMethod.GET)
     public ModelAndView searchResource(){
-        return invViewController.manageInventoryTab((ArrayList<Resource>) resourceService.getAllResource(), "");
+        return invViewController.manageInventoryTab((ArrayList<Resource>) invManagementService.getAllResource(), "");
     }
 
     @RequestMapping(value = "/updateComputer", method = RequestMethod.POST)
@@ -58,8 +58,8 @@ public class InvManagementController {
         Computer computer;
         Resource resource;
         try {
-            computer = resourceService.getComputerById(Long.parseLong(computerID));
-            resource = resourceService.getResourceByID(Long.parseLong(resourceID));
+            computer = invManagementService.getComputerById(Long.parseLong(computerID));
+            resource = invManagementService.getResourceByID(Long.parseLong(resourceID));
 
             computer.setHostname(hostName);
             computer.setMachine_type(machineType);
@@ -75,11 +75,11 @@ public class InvManagementController {
             computer.setDvi_output(!(dviout==null));
             computer.setVga_output(!(vgaout==null));
 
-            resourceService.updateComputer(computer);
+            invManagementService.updateComputer(computer);
 
             resource.setMovable(!(moveable==null));
 
-            resourceService.updateResource(resource);
+            invManagementService.updateResource(resource);
 
             return searchResource(resourceID);
         }catch (Exception e){
@@ -99,8 +99,8 @@ public class InvManagementController {
         Projector projector;
         Resource resource;
         try{
-            projector = resourceService.getProjectorById(Long.parseLong(projectorID));
-            resource = resourceService.getResourceByID(Long.parseLong(resourceID));
+            projector = invManagementService.getProjectorById(Long.parseLong(projectorID));
+            resource = invManagementService.getResourceByID(Long.parseLong(resourceID));
 
             projector.setHeight(Integer.parseInt(projectorHeight));
             projector.setWidth(Integer.parseInt(projectorWidth));
@@ -108,11 +108,11 @@ public class InvManagementController {
             projector.setDvi_input(!(hdmiin==null));
             projector.setVga_input(!(vgain==null));
 
-            resourceService.updateProjector(projector);
+            invManagementService.updateProjector(projector);
 
             resource.setMovable(!(projectorMovable==null));
 
-            resourceService.updateResource(resource);
+            invManagementService.updateResource(resource);
 
             return searchResource(resourceID);
         }catch (Exception e){
@@ -125,9 +125,9 @@ public class InvManagementController {
     public ModelAndView updateRoom(@RequestParam String roomID, @RequestParam String resourceID, @RequestParam String roomNumber){
         Room room;
         try {
-            room = resourceService.getRoomById(Integer.parseInt(roomID));
+            room = invManagementService.getRoomById(Integer.parseInt(roomID));
             room.setRoom_number(roomNumber);
-            resourceService.updateRoom(room);
+            invManagementService.updateRoom(room);
 
             return searchResource(resourceID);
         }catch (Exception e){
@@ -143,22 +143,72 @@ public class InvManagementController {
         WhiteBoard whiteBoard;
         Resource resource;
         try{
-            whiteBoard = resourceService.getWhiteBoardById(Long.parseLong(whiteBoardID));
-            resource = resourceService.getResourceByID(Long.parseLong(resourceID));
+            whiteBoard = invManagementService.getWhiteBoardById(Long.parseLong(whiteBoardID));
+            resource = invManagementService.getResourceByID(Long.parseLong(resourceID));
 
             whiteBoard.setWidth(Integer.parseInt(boardWidth));
             whiteBoard.setHeight(Integer.parseInt(boardHeight));
 
-            resourceService.updateBoard(whiteBoard);
+            invManagementService.updateBoard(whiteBoard);
 
             resource.setMovable(!(movable==null));
 
-            resourceService.updateResource(resource);
+            invManagementService.updateResource(resource);
 
             return searchResource(resourceID);
         }catch (Exception e){
             e.printStackTrace();
             return invViewController.manageInventoryTab(null, "Update failed, please try again");
+        }
+    }
+
+    @RequestMapping(value = "/addCompForm", method = RequestMethod.POST)
+    public ModelAndView addComputer(@RequestParam String hostName, @RequestParam String description,
+                                    @RequestParam String machineType, @RequestParam String operatingSystem,
+                                    @RequestParam String manufacturer, @RequestParam String model,
+                                    @RequestParam (value = "movable", required = false) String movable,
+                                    @RequestParam (value = "wirelessnetworking", required = false) String wirelessnetworking,
+                                    @RequestParam (value = "wirednetworking", required = false)String wirednetworking,
+                                    @RequestParam (value = "speakersincluded", required = false)String speakersincluded,
+                                    @RequestParam (value = "keyboardincluded", required = false)String keyboardincluded,
+                                    @RequestParam (value = "mouseincluded", required = false)String mouseincluded,
+                                    @RequestParam (value = "hdmiout", required = false)String hdmiout,
+                                    @RequestParam (value = "dviout", required = false)String dviout,
+                                    @RequestParam (value = "vgaout", required = false)String vgaout){
+        Computer computer;
+        Resource resource = new Resource();
+        try {
+            computer = invManagementService.getLastIndexComp();
+
+            computer.setId(computer.getId()+1);
+            computer.setHostname(hostName);
+            computer.setMachine_type(machineType);
+            computer.setOperating_system_id(Long.parseLong(operatingSystem.substring(0, 1)));
+            computer.setManufacturer(manufacturer);
+            computer.setModel(model);
+            computer.setWireless_networking(wirelessnetworking != null);
+            computer.setWired_networking(!(wirednetworking==null));
+            computer.setSpeakers(!(speakersincluded==null));
+            computer.setKeyboard(!(keyboardincluded==null));
+            computer.setMouse(!(mouseincluded==null));
+            computer.setHdmi_output(!(hdmiout==null));
+            computer.setDvi_output(!(dviout==null));
+            computer.setVga_output(!(vgaout==null));
+
+            invManagementService.insertComputer(computer);
+
+            resource.setAvailable(true);
+            resource.setDescription(description);
+            resource.setName("Computer");
+            resource.setResourceUID(computer.getId());
+            resource.setMovable(!(movable==null));
+
+            invManagementService.insertResource(resource);
+
+            return invViewController.addComputerPage("Successfully Added!");
+        }catch (Exception e){
+            e.printStackTrace();
+            return invViewController.addComputerPage("Something Wrong, Please try again.");
         }
     }
 }

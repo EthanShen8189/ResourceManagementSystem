@@ -1,7 +1,7 @@
 package concordia.soen387.project.Controllers;
 
 import concordia.soen387.project.Model.*;
-import concordia.soen387.project.Services.ResourceService;
+import concordia.soen387.project.Services.InvManagementService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -10,12 +10,13 @@ import org.springframework.web.servlet.ModelAndView;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @Controller
 public class InvViewController {
 	
 	private ModelAndView modelAndView = new ModelAndView();
-	private ResourceService resourceService = new ResourceService();
+	private InvManagementService invManagementService = new InvManagementService();
 
 	@RequestMapping(value = "/manageInventory")
 	public ModelAndView manageInventoryTab(ArrayList<Resource> resourceArrayList, String msg){
@@ -45,12 +46,23 @@ public class InvViewController {
 		
 	}
 	@RequestMapping(value = "/addInventory")
-	public ModelAndView addInventoryTab(){
+	public ModelAndView addInventoryTab(String url, String type, String msg){
 		modelAndView.setViewName("inventory/invIndex");
 		modelAndView.addObject("accountSettingsTabActive", "");
 		modelAndView.addObject("addInventoryTabActive","active");
 		modelAndView.addObject("manageInventoryTabActive","");
 		modelAndView.addObject("selectedTab", "../../jsp/inventory/addInventoryForm.jsp");
+		if(type!=null && type.equalsIgnoreCase("computer")){
+			modelAndView.addObject("osList", invManagementService.getAllComputerOs());
+		}else if(type!=null && type.equalsIgnoreCase("room")){
+			modelAndView.addObject("buildingList", invManagementService.getAllBuilding());
+		}
+		if(url != null) {
+			modelAndView.addObject("addInventoryPage", url);
+		}
+		if(msg != null) {
+			modelAndView.addObject("insertMsg", msg);
+		}
 		return modelAndView;
 
 	}
@@ -64,9 +76,9 @@ public class InvViewController {
 			resourceUID = Long.parseLong(editParam.substring(editParam.indexOf("/") + 1));
 			if(resourceDesc.toLowerCase().contains("computer") && resourceUID > 0){
 				List<Computer> computerList = new ArrayList<>();
-				List<ComputerOs> osList = resourceService.getAllComputerOs();
-				Resource resource = resourceService.getResourceByID(Long.parseLong(resourceId));
-                computerList.add(resourceService.getComputerById(resourceUID));
+				List<ComputerOs> osList = invManagementService.getAllComputerOs();
+				Resource resource = invManagementService.getResourceByID(Long.parseLong(resourceId));
+                computerList.add(invManagementService.getComputerById(resourceUID));
 
 				modelAndView.setViewName("inventory/invIndex");
 				modelAndView.addObject("resourceId", resourceId);
@@ -76,8 +88,8 @@ public class InvViewController {
 				modelAndView.addObject("selectedTab", "../../jsp/inventory/editComputer.jsp");
 			}else if(resourceDesc.toLowerCase().contains("projector") && resourceUID > 0){
 				List<Projector> projectorList = new ArrayList<>();
-				projectorList.add(resourceService.getProjectorById(resourceUID));
-				Resource resource = resourceService.getResourceByID(Long.parseLong(resourceId));
+				projectorList.add(invManagementService.getProjectorById(resourceUID));
+				Resource resource = invManagementService.getResourceByID(Long.parseLong(resourceId));
 
 				modelAndView.setViewName("inventory/invIndex");
 				modelAndView.addObject("resourceId", resourceId);
@@ -86,8 +98,8 @@ public class InvViewController {
 				modelAndView.addObject("selectedTab", "../../jsp/inventory/editProjector.jsp");
 			}else if(resourceDesc.toLowerCase().contains("room") && resourceUID > 0){
 				List<Room> roomList = new ArrayList<>();
-				roomList.add(resourceService.getRoomById((int) resourceUID));
-				Resource resource = resourceService.getResourceByID(Long.parseLong(resourceId));
+				roomList.add(invManagementService.getRoomById((int) resourceUID));
+				Resource resource = invManagementService.getResourceByID(Long.parseLong(resourceId));
 
 				modelAndView.setViewName("inventory/invIndex");
 				modelAndView.addObject("resourceId", resourceId);
@@ -96,8 +108,8 @@ public class InvViewController {
 				modelAndView.addObject("selectedTab", "../../jsp/inventory/editRoom.jsp");
 			}else if(resourceDesc.toLowerCase().contains("white") && resourceUID > 0){
 				List<WhiteBoard> whiteBoardList = new ArrayList<>();
-				whiteBoardList.add(resourceService.getWhiteBoardById(resourceUID));
-				Resource resource = resourceService.getResourceByID(Long.parseLong(resourceId));
+				whiteBoardList.add(invManagementService.getWhiteBoardById(resourceUID));
+				Resource resource = invManagementService.getResourceByID(Long.parseLong(resourceId));
 
 				modelAndView.setViewName("inventory/invIndex");
 				modelAndView.addObject("resourceId", resourceId);
@@ -108,6 +120,26 @@ public class InvViewController {
 		}
 		return modelAndView;
 		
+	}
+
+	@RequestMapping(value = "/addComputerPage")
+	public ModelAndView addComputerPage(String msg){
+		return addInventoryTab("../../jsp/inventory/addComputerForm.jsp", "computer", msg);
+	}
+
+	@RequestMapping(value = "/addWhiteboardPage")
+	public ModelAndView addWhiteboardPage(String msg){
+		return addInventoryTab("../../jsp/inventory/addWhiteboardPage.jsp", "", msg);
+	}
+
+	@RequestMapping(value = "/addRoomPage")
+	public ModelAndView addRoomPage(String msg){
+		return addInventoryTab("../../jsp/inventory/addRoomPage.jsp", "room", msg);
+	}
+
+	@RequestMapping(value = "/addProjectorPage")
+	public ModelAndView addProjectorPage(String msg){
+		return addInventoryTab("../../jsp/inventory/addProjectorPage.jsp", "",msg);
 	}
 
 }

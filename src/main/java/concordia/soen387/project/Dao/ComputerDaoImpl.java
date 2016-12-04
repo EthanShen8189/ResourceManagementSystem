@@ -82,7 +82,21 @@ public class ComputerDaoImpl implements ComputerDao{
 
         return computerList;
 	}
-	
+
+	@Override
+	public Computer getLastIndexComputer() {
+		String sql = "SELECT * FROM computer where id = (select max(id) from computer)";
+		return jdbcTemplate.query(sql, new ResultSetExtractor<Computer>() {
+			@Override
+			public Computer extractData(ResultSet resultSet) throws SQLException, DataAccessException {
+				if(resultSet.next()){
+					return initComputer(resultSet);
+				}
+				return null;
+			}
+		});
+	}
+
 	private Computer initComputer(ResultSet resultSet) throws SQLException{
 		Computer computer = new Computer();
         computer.setDvi_output(resultSet.getBoolean("dvi_output"));

@@ -1,4 +1,6 @@
-<h3>Add Whiteboard</h3>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
+<h4>Add Whiteboard</h4>
 <form id="boardForm" class="form-horizontal" method="post" action="<c:url value='/boardform'/>">
 	<div class="form-group">
 		<label class="control-label col-sm-2" for="boardWidth">Width:</label>
