@@ -92,7 +92,7 @@ public class ResourceService {
         whiteBoardDao.updateWhiteBoard(whiteBoard);
     }
 
-    public WhiteBoard getWhileboardById(long id){
+    public WhiteBoard getWhiteBoardById(long id){
         return whiteBoardDao.getWhiteBoardById(id);
     }
 
