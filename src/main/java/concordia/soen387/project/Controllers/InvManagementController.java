@@ -1,10 +1,6 @@
 package concordia.soen387.project.Controllers;
 
-
-import concordia.soen387.project.Model.Computer;
-import concordia.soen387.project.Model.Projector;
-import concordia.soen387.project.Model.Resource;
-import concordia.soen387.project.Model.Room;
+import concordia.soen387.project.Model.*;
 import concordia.soen387.project.Services.ResourceService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -132,6 +128,32 @@ public class InvManagementController {
             room = resourceService.getRoomById(Integer.parseInt(roomID));
             room.setRoom_number(roomNumber);
             resourceService.updateRoom(room);
+
+            return searchResource(resourceID);
+        }catch (Exception e){
+            e.printStackTrace();
+            return invViewController.manageInventoryTab(null, "Update failed, please try again");
+        }
+    }
+
+    @RequestMapping(value = "/updatewhiteboard", method = RequestMethod.POST)
+    public ModelAndView updateWhiteboard (@RequestParam String whiteBoardID, @RequestParam String resourceID,
+                                          @RequestParam String boardWidth, @RequestParam String boardHeight,
+                                         @RequestParam String movable){
+        WhiteBoard whiteBoard;
+        Resource resource;
+        try{
+            whiteBoard = resourceService.getWhileboardById(Long.parseLong(whiteBoardID));
+            resource = resourceService.getResourceByID(Long.parseLong(resourceID));
+
+            whiteBoard.setWidth(Integer.parseInt(boardWidth));
+            whiteBoard.setHeight(Integer.parseInt(boardHeight));
+
+            resourceService.updateBoard(whiteBoard);
+
+            resource.setMovable(!(movable==null));
+
+            resourceService.updateResource(resource);
 
             return searchResource(resourceID);
         }catch (Exception e){

@@ -4,7 +4,7 @@ package concordia.soen387.project.Model;
 public class Room {
 	
 	private String room_number;
-	private int id;
+	private long id;
 	private int building_id;
 	private int roomCapacity;
 
@@ -18,11 +18,11 @@ public class Room {
 		this.room_number = room_number;
 	}
 
-	public int getId() {
+	public long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 

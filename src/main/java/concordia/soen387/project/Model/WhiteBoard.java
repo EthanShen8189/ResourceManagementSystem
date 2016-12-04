@@ -5,7 +5,6 @@ public class WhiteBoard {
 	
 	private int height;
 	private int width;
-	private int boardRoomNumber;
 	private int id;
 	
 	public WhiteBoard(){}
@@ -25,14 +24,6 @@ public class WhiteBoard {
 
 	public void setWidth(int width) {
 		this.width = width;
-	}
-
-	public int getBoardRoomNumber() {
-		return boardRoomNumber;
-	}
-
-	public void setBoardRoomNumber(int boardRoomNumber) {
-		this.boardRoomNumber = boardRoomNumber;
 	}
 
 	public int getId() {

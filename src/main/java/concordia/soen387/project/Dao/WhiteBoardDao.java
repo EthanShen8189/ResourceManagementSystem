@@ -12,7 +12,7 @@ public interface WhiteBoardDao {
 	void addWhiteBoard(WhiteBoard whiteBoard);
 	void updateWhiteBoard(WhiteBoard whiteBoard);
 	void deleteWhiteBoard(int id);
-	WhiteBoard getWhiteBoardById(int id);
+	WhiteBoard getWhiteBoardById(long id);
 	List<WhiteBoard> getAllWhiteBoard();
 
 }

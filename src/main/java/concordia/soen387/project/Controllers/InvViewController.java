@@ -94,6 +94,16 @@ public class InvViewController {
 				modelAndView.addObject("movableCheck", resource.getMovable());
 				modelAndView.addObject("room", roomList);
 				modelAndView.addObject("selectedTab", "../../jsp/inventory/editRoom.jsp");
+			}else if(resourceDesc.toLowerCase().contains("white") && resourceUID > 0){
+				List<WhiteBoard> whiteBoardList = new ArrayList<>();
+				whiteBoardList.add(resourceService.getWhileboardById(resourceUID));
+				Resource resource = resourceService.getResourceByID(Long.parseLong(resourceId));
+
+				modelAndView.setViewName("inventory/invIndex");
+				modelAndView.addObject("resourceId", resourceId);
+				modelAndView.addObject("movableCheck", resource.getMovable());
+				modelAndView.addObject("whiteboard", whiteBoardList);
+				modelAndView.addObject("selectedTab", "../../jsp/inventory/editRoom.jsp");
 			}
 		}
 		return modelAndView;

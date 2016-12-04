@@ -49,7 +49,7 @@ public class WhiteBoardDaoImpl implements WhiteBoardDao{
 	}
 
 	@Override
-	public WhiteBoard getWhiteBoardById(int id) {
+	public WhiteBoard getWhiteBoardById(long id) {
 		String sql = "SELECT * FROM whiteboard WHERE id=" + id;
         return jdbcTemplate.query(sql, new ResultSetExtractor<WhiteBoard>() {
             @Override

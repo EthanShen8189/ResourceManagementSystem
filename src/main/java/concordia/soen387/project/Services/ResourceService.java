@@ -18,29 +18,29 @@ public class ResourceService {
 
     @Autowired
     static ResourceDao resourceDao;
-
     @Autowired
     static ComputerDao computerDao;
-
     @Autowired
     static ComputerOsDao computerOsDao;
-
     @Autowired
     static ProjectorDao projectorDao;
-
     @Autowired
     static RoomDao roomDao;
+    @Autowired
+    static WhiteBoardDao whiteBoardDao;
 
     static {
         if(context==null){
             context = new ClassPathXmlApplicationContext("Spring-Module.xml");
         }
-        if(resourceDao == null || computerDao == null || computerOsDao ==null || projectorDao==null || roomDao == null){
+        if(resourceDao == null || computerDao == null || computerOsDao ==null || projectorDao==null || roomDao == null ||
+                whiteBoardDao ==null){
             resourceDao = (ResourceDao) context.getBean("resourceDao");
             computerDao = (ComputerDao) context.getBean("computerDao");
             computerOsDao = (ComputerOsDao) context.getBean("computerOsDao");
             projectorDao = (ProjectorDao) context.getBean("projectorDao");
             roomDao = (RoomDao) context.getBean("roomDao");
+            whiteBoardDao = (WhiteBoardDao) context.getBean("whiteBoardDao");
         }
     }
 
@@ -86,6 +86,14 @@ public class ResourceService {
 
     public void updateRoom(Room room){
         roomDao.updateRoom(room);
+    }
+
+    public void updateBoard(WhiteBoard whiteBoard){
+        whiteBoardDao.updateWhiteBoard(whiteBoard);
+    }
+
+    public WhiteBoard getWhileboardById(long id){
+        return whiteBoardDao.getWhiteBoardById(id);
     }
 
 

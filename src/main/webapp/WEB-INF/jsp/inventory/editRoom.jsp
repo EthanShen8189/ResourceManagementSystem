@@ -28,7 +28,6 @@
 	</div>
 
 </form>
-		</form>
 		<form class="form-horizontal" action="<c:url value="/manageInventory"/>">
 			<div class="form-group">
 				<button type="submit" class="btn btn-block btn-default">Back</button>
