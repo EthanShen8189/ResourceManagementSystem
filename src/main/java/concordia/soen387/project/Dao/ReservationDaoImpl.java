@@ -110,6 +110,20 @@ public class ReservationDaoImpl implements ReservationDao{
         return reservationList;
     }
 
+    @Override
+    public List<Reservation> getAllReservationByUsername(String username) {
+        String sql = "SELECT * FROM reservation WHERE id=" + "\'"+username+"\'";
+        List<Reservation> reservationList = jdbcTemplate.query(sql, new RowMapper<Reservation>(){
+
+            @Override
+            public Reservation mapRow(ResultSet resultSet, int i) throws SQLException {
+                return initReservation(resultSet);
+            }
+
+        });
+        return reservationList;
+    }
+
     private Reservation initReservation(ResultSet resultSet) throws SQLException{
         Reservation reservation = new Reservation();
         reservation.setId(resultSet.getInt("id"));

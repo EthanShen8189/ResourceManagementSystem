@@ -21,6 +21,7 @@
                 <th>Name</th>
                 <th>Description</th>
                 <th>Movable</th>
+                  <th></th>
               </tr>
              </thead>
               <tbody>

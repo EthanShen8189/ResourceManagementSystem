@@ -2,8 +2,9 @@ package concordia.soen387.project.Controllers;
 
 import concordia.soen387.project.Model.Resource;
 import concordia.soen387.project.Services.InvManagementService;
+import concordia.soen387.project.Services.ResService;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
+
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -18,6 +19,8 @@ public class ResViewController {
 	private static ResViewController resViewController = new ResViewController();
 	private ModelAndView modelAndView = new ModelAndView();
 	private InvManagementService invManagementService = new InvManagementService();
+	private static ResService resService = new ResService();
+
 	private static String userName;
 	private static String firstName;
 	private static long department_id;
@@ -66,6 +69,11 @@ public class ResViewController {
 		modelAndView.addObject("newReservationPageActive", "");
 		modelAndView.addObject("myReservationPageActive","active");
 		modelAndView.addObject("profilePageActive", "");
+		if(resService.getAllMyreservations(userName) != null) {
+			modelAndView.addObject("myReservations", resService.getAllMyreservations(userName));
+		}else {
+			modelAndView.addObject("noFoundMsg", "You don't have any reservation yet.");
+		}
 		modelAndView.addObject("selectedTab", "../../jsp/reservation/my-reservations.jsp");
 		return modelAndView;
 		

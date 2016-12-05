@@ -25,7 +25,6 @@ public class ReservationController {
 
     private ResService resService = new ResService();
     private ResViewController resViewController = ResViewController.getResViewController();
-    private InvManagementService invManagementService = new InvManagementService();
 
     @RequestMapping(value = "/reserveResource", method = RequestMethod.POST)
     public ModelAndView reserveResource(@RequestParam String resourceId, @RequestParam String username, @RequestParam String start_date,
@@ -80,11 +79,10 @@ public class ReservationController {
     }
 
     private Boolean validateReservation(Date startTime, Date endTime, String resourceId){
+
         Date resStartFromdb;
         Date resEndFromdb;
-        Date startTimefromClient;
-        Date endTimefromClient;
-        boolean flag = true;
+        boolean flag;
         DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:MM:SS");
 
         List<Reservation> reservationList = new ArrayList<>();

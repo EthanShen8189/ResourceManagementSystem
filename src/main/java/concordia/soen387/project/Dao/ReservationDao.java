@@ -15,4 +15,5 @@ public interface ReservationDao {
     List<Reservation> getAllReservation();
     Reservation getLastIndexReservation();
     List<Reservation> getAllreservationWithID(long l);
+    List<Reservation> getAllReservationByUsername(String username);
 }

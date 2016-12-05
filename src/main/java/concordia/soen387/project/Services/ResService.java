@@ -1,13 +1,18 @@
 package concordia.soen387.project.Services;
 
+import concordia.soen387.project.Dao.MyReservationDao;
 import concordia.soen387.project.Dao.ReservationDao;
 import concordia.soen387.project.Dao.ReservationResourceDao;
+import concordia.soen387.project.Dao.ResourceDao;
+import concordia.soen387.project.Model.MyReservation;
 import concordia.soen387.project.Model.Reservation;
 import concordia.soen387.project.Model.ReservationResources;
+import concordia.soen387.project.Model.Resource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -20,14 +25,21 @@ public class ResService {
     static ReservationDao reservationDao;
     @Autowired
     static ReservationResourceDao reservationResourceDao;
+    @Autowired
+    static ResourceDao resourceDao;
+    @Autowired
+    static MyReservationDao myReservationDao;
 
     static {
         if(context==null){
             context = new ClassPathXmlApplicationContext("Spring-Module.xml");
         }
-        if(reservationDao == null || reservationResourceDao == null){
+        if(reservationDao == null || reservationResourceDao == null
+                || resourceDao == null || myReservationDao == null){
             reservationDao = (ReservationDao) context.getBean("reservationDao");
             reservationResourceDao = (ReservationResourceDao) context.getBean("reservationResourceDao");
+            resourceDao = (ResourceDao) context.getBean("resourceDao");
+            myReservationDao = (MyReservationDao) context.getBean("myReservationDao");
         }
     }
 
@@ -49,5 +61,24 @@ public class ResService {
 
     public Reservation getReservationByID(Long reservationID) {
         return reservationDao.getReservationById(reservationID);
+    }
+
+    public List<MyReservation> getAllMyreservations(String username){
+        /*
+        List<Reservation> reservationList = reservationDao.getAllReservationByUsername(username);
+        Map<, Reservation>
+        List<ReservationResources> reservationResourcesList = new ArrayList<>();
+        List<Resource> resourceList = new ArrayList<>();
+
+        for(Reservation reservation: reservationList){
+            reservationResourcesList.add(reservationResourceDao.getReservationResourceById(reservation.getId()));
+        }
+
+        for(ReservationResources reservationResources: reservationResourcesList){
+            resourceList.add(resourceDao.getResourceById(reservationResources.getResource_id()));
+        }
+        */
+
+        return myReservationDao.getAllMyReservation(username);
     }
 }

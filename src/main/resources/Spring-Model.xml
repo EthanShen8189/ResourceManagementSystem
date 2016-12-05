@@ -3,6 +3,10 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
        http://www.springframework.org/schema/beans/spring-beans-3.2.xsd">
 
+    <bean id="myReservationDao" class="concordia.soen387.project.Dao.MyReservationDaoImpl">
+        <constructor-arg ref="dataSource"/>
+    </bean>
+
     <bean id="reservationDao" class="concordia.soen387.project.Dao.ReservationDaoImpl">
         <constructor-arg ref="dataSource"/>
     </bean>
