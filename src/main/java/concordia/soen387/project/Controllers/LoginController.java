@@ -18,6 +18,7 @@ public class LoginController {
     private LoginService loginService = new LoginService();
     private ModelAndView modelAndView = new ModelAndView();
     private InvViewController invViewController = InvViewController.getInvViewController();
+    private ResViewController resViewController = ResViewController.getResViewController();
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String loginPage() {
@@ -53,9 +54,9 @@ public class LoginController {
                 modelAndView.addObject("name", name.substring(name.indexOf(":")+1, name.indexOf("+")));
                 modelAndView.addObject("username", name.substring(0,name.indexOf(":")));
 
-                invViewController.setUserName(name.substring(0,name.indexOf(":")));
-                invViewController.setFirstName(name.substring(name.indexOf(":")+1, name.indexOf("+")));
-                invViewController.setDepartment_id(Long.parseLong(name.substring(name.indexOf("+")+1)));
+                resViewController.setUserName(name.substring(0,name.indexOf(":")));
+                resViewController.setFirstName(name.substring(name.indexOf(":")+1, name.indexOf("+")));
+                resViewController.setDepartment_id(Long.parseLong(name.substring(name.indexOf("+")+1)));
                 return modelAndView;
 
             }else{

@@ -44,7 +44,7 @@
                     <td><c:out value="${resource.description}"/></td>
                     <td><c:out value="${resource.movable}"/></td>
                     <td><button class="btn btn-default btn-sm" name="editParam" value="${resource.description}/${resource.resourceUID}" type="submit">
-                        <i class="fa fa-pencil" aria-hidden="true"></i></button></td>
+                        <i class="fa fa-pencil" aria-hidden="true"></i>Book</button></td>
                 </tr>
             </form>
             </c:forEach>

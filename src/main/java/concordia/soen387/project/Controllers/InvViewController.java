@@ -28,15 +28,15 @@ public class InvViewController {
 		return invViewController;
 	}
 
-	public void setUserName(String userName) {
+	void setUserName(String userName) {
 		InvViewController.userName = userName;
 	}
 
-	public void setFirstName(String firstName) {
+	void setFirstName(String firstName) {
 		InvViewController.firstName = firstName;
 	}
 
-	public void setDepartment_id(long department_id) {
+	void setDepartment_id(long department_id) {
 		InvViewController.department_id = department_id;
 	}
 

@@ -13,5 +13,6 @@ public interface ReservationDao {
     void deleteReservation(int ReservationId);
     Reservation getReservationById(int ReservationId);
     List<Reservation> getAllReservation();
+    Reservation getLastIndexReservation();
     
 }

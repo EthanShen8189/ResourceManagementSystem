@@ -1,5 +1,8 @@
-  <div class="container-fluid">
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
+<div class="container-fluid">
     <div class="row">
+      <!--
       <div class="col-sm-3 col-md-2 sidebar">
         <ul class="nav nav-sidebar">
           <li>
@@ -7,34 +10,43 @@
             <li class="active"><a href="#">Reservations <span class="sr-only">(current)</span></a></li>
           </ul>
         </div>
-        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-          <h1 class="page-header">Resource Details</h1>
+
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">-->
+          <h4 class="page-header">Resource Details</h4>
           <div>
             <table class="table table-striped table-responsive table-bordered">
+             <thead>
               <tr>
-                <td>ID</td>
-                <td>1000</td>
+                <th>Resource ID</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Movable</th>
               </tr>
-              <tr>
-                <td>Attribute</td>
-                <td>Value</td>
-              </tr>
-              <tr>
-                <td>Attribute</td>
-                <td>Value</td>
-              </tr>
-              <tr>
-                <td>Attribute</td>
-                <td>Value</td>
-              </tr>
-              <tr>
-                <td>Attribute</td>
-                <td>Value</td>
-              </tr>
+             </thead>
+              <tbody>
+              <c:forEach items="${resourceList}" var="resource">
+                <form action="<c:url value="/reservePrepare"/>" method="post">
+                    <tr>
+                    <td><c:out value="${resource.id}"/></td>
+                    <td><c:out value="${resource.name}"/></td>
+                    <td><c:out value="${resource.description}"/></td>
+                    <td><c:out value="${resource.movable}"/></td>
+                    <td><button class="btn btn-default" name="resourceParam" value="${resource.id}/${resource.resourceUID}" type="submit">
+                      <i class="fa fa-pencil" aria-hidden="true">Reserve</i></button></td>
+                  </tr>
+                </form>
+              </c:forEach>
+              </tbody>
             </table>
+            </div>
+        <c:if test="${resourceUID !=''}">
             <div class="box-group">
               <h2>Reservation</h2>
-              <form action="summary.html">
+              <h4>for Resource ID: ${resourceId}, Resource Name: ${resourceName}</h4>
+              <form action="<c:url value="/reserveResource"/>" method="post">
+                <input type="hidden" name="resourceId" value="${resourceId}">
+                <input type="hidden" name="resourceUID" value="${resourceUID}">
+                  <input type="hidden" name="username" value="${username}">
                 <div>
                   <div class="form-group">
                     <label for="start_date">Start Date</label>
@@ -53,10 +65,10 @@
                     <input class="form-control" id="end_time" type="time" name="end_time">
                   </div>
                   <input class="btn btn-primary" type="submit" value="Reserve">
-                  <a class="btn btn-default" href="results.html">Cancel</a>
                 </div>
-              </form></div>
+              </form>
             </div>
+        </c:if>
           </div>
-        </div>
+      <!--  </div> -->
         </div> <!-- /container -->

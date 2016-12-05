@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by EthanShen on 2016-12-03.
@@ -144,5 +144,136 @@ public class InvManagementService {
     public void updateEmployee(Employee employee) {
         employeeDao.updateUser(employee);
     }
+
+    public List<Computer> getAllComputer(){
+        return computerDao.getAllComputers();
+    }
+
+    public List<Room> getAllRoom() {
+        return roomDao.getAllRooms();
+    }
+
+    public List<Projector> getAllProjector() {
+        return projectorDao.getAllProjectors();
+    }
+
+    public List<WhiteBoard> getAllWhiteboard() {
+        return whiteBoardDao.getAllWhiteBoard();
+    }
+
+    public Map<Long, Computer> queryComputerResource(){
+        Map<Long,Computer> resourceComputerMap = new HashMap<>();
+        Map<Long, Long> resourceComputerMapping = new HashMap<>();
+        Map<Long, Computer> computerMap = new HashMap<>();
+
+        List<Resource> resourceList = getAllResource();
+        List<Computer> computerList = getAllComputer();
+        Set<Long> UIDs = new HashSet<>();
+
+        for(Computer computer: computerList){
+            computerMap.put((long) computer.getId(), computer);
+        }
+
+        for(Resource resource: resourceList){
+            if(resource.getDescription().toLowerCase().contains("computer")){
+                resourceComputerMapping.put((long) resource.getId(), (long) resource.getResourceUID());
+            }
+        }
+
+        UIDs = resourceComputerMapping.keySet();
+
+        for(Long key: UIDs){
+            resourceComputerMap.put(key, computerMap.get(key));
+        }
+
+        return resourceComputerMap;
+    }
+
+    public Map<Long, Room> queryRoomResource(){
+        Map<Long,Room> resourceRoomMap = new HashMap<>();
+        Map<Long, Long> resourceRoomMapping = new HashMap<>();
+        Map<Long, Room> roomMap = new HashMap<>();
+
+        List<Resource> resourceList = getAllResource();
+        List<Room> roomList = getAllRoom();
+        Set<Long> UIDs = new HashSet<>();
+
+        for(Room room: roomList){
+            roomMap.put((long) room.getId(), room);
+        }
+
+        for(Resource resource: resourceList){
+            if(resource.getDescription().toLowerCase().contains("room")){
+                resourceRoomMapping.put((long) resource.getId(), (long) resource.getResourceUID());
+            }
+        }
+
+        UIDs = resourceRoomMapping.keySet();
+
+        for(Long key: UIDs){
+            resourceRoomMap.put(key, roomMap.get(key));
+        }
+
+        return resourceRoomMap;
+    }
+
+    public Map<Long, Projector> queryProjectorResource(){
+        Map<Long,Projector> resourceProjectorMap = new HashMap<>();
+        Map<Long, Long> resourceProjectorMapping = new HashMap<>();
+        Map<Long, Projector> projectorMap = new HashMap<>();
+
+        List<Resource> resourceList = getAllResource();
+        List<Projector> projectorList = getAllProjector();
+        Set<Long> UIDs = new HashSet<>();
+
+        for(Projector projector: projectorList){
+            projectorMap.put((long) projector.getId(), projector);
+        }
+
+        for(Resource resource: resourceList){
+            if(resource.getDescription().toLowerCase().contains("projector")){
+                resourceProjectorMapping.put((long) resource.getId(), (long) resource.getResourceUID());
+            }
+        }
+
+        UIDs = resourceProjectorMapping.keySet();
+
+        for(Long key: UIDs){
+            resourceProjectorMap.put(key, projectorMap.get(key));
+        }
+
+        return resourceProjectorMap;
+    }
+
+    public Map<Long, WhiteBoard> queryWhiteBoardResource(){
+        Map<Long,WhiteBoard> resourceWhiteboardMap = new HashMap<>();
+        Map<Long, Long> resourceWhiteboardMapping = new HashMap<>();
+        Map<Long, WhiteBoard> whiteboardMap = new HashMap<>();
+
+        List<Resource> resourceList = getAllResource();
+        List<WhiteBoard> whiteboardList = getAllWhiteboard();
+        Set<Long> UIDs = new HashSet<>();
+
+        for(WhiteBoard whiteboard: whiteboardList){
+            whiteboardMap.put((long) whiteboard.getId(), whiteboard);
+        }
+
+        for(Resource resource: resourceList){
+            if(resource.getDescription().toLowerCase().contains("board")){
+                resourceWhiteboardMapping.put((long) resource.getId(), (long) resource.getResourceUID());
+            }
+        }
+
+        UIDs = resourceWhiteboardMapping.keySet();
+
+        for(Long key: UIDs){
+            resourceWhiteboardMap.put(key, whiteboardMap.get(key));
+        }
+
+        return resourceWhiteboardMap;
+    }
+
+
+
 
 }

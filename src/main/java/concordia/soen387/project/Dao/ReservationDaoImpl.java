@@ -81,7 +81,21 @@ public class ReservationDaoImpl implements ReservationDao{
         });
         return reservationList;
     }
-    
+
+    @Override
+    public Reservation getLastIndexReservation() {
+        String sql = "SELECT * FROM reservation where id = (select max(id) from reservation)";
+        return jdbcTemplate.query(sql, new ResultSetExtractor<Reservation>() {
+            @Override
+            public Reservation extractData(ResultSet resultSet) throws SQLException, DataAccessException {
+                if(resultSet.next()){
+                    return initReservation(resultSet);
+                }
+                return null;
+            }
+        });
+    }
+
     private Reservation initReservation(ResultSet resultSet) throws SQLException{
         Reservation reservation = new Reservation();
         reservation.setId(resultSet.getInt("id"));
