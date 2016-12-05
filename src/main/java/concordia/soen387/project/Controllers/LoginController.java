@@ -44,6 +44,7 @@ public class LoginController {
 
                 invViewController.setUserName(name.substring(0,name.indexOf(":")));
                 invViewController.setFirstName(name.substring(name.indexOf(":")+1, name.indexOf("+")));
+                invViewController.setPassword(password);
                 invViewController.setDepartment_id(Long.parseLong(name.substring(name.indexOf("+")+1)));
                 return modelAndView;
 
@@ -55,6 +56,7 @@ public class LoginController {
 
                 resViewController.setUserName(name.substring(0,name.indexOf(":")));
                 resViewController.setFirstName(name.substring(name.indexOf(":")+1, name.indexOf("+")));
+                resViewController.setPassword(password);
                 resViewController.setDepartment_id(Long.parseLong(name.substring(name.indexOf("+")+1)));
                 return modelAndView;
 

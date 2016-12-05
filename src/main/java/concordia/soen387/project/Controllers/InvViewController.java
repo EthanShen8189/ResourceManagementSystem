@@ -20,6 +20,7 @@ public class InvViewController {
 	private InvManagementService invManagementService = new InvManagementService();
 	private static String userName;
 	private static String firstName;
+	private static String password;
 	private static long department_id;
 
 	private InvViewController(){}
@@ -38,6 +39,26 @@ public class InvViewController {
 
 	void setDepartment_id(long department_id) {
 		InvViewController.department_id = department_id;
+	}
+
+	void setPassword(String password) {
+		InvViewController.password = password;
+	}
+
+	String getUserName() {
+		return userName;
+	}
+
+	String getFirstName() {
+		return firstName;
+	}
+
+	String getPassword() {
+		return password;
+	}
+
+	long getDepartment_id() {
+		return department_id;
 	}
 
 	@RequestMapping(value = "/manageInventory")

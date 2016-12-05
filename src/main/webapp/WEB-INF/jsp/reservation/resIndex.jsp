@@ -19,7 +19,7 @@
                     <ul class="nav navbar-nav">
                         <li class=${newReservationPageActive}><a href="${pageContext.request.contextPath}/newReservationPage">New Reservation</a></li> <!-- manageInventory.jsp -->
                         <li class=${myReservationPageActive}><a href="${pageContext.request.contextPath}/myReservationPage">My Reservations</a></li> <!-- accountSettings.jsp -->
-                        <li class=${profilePageActive}><a href="${pageContext.request.contextPath}/profilePage">Profile</a></li> <!-- addInventory.jsp -->
+                        <li class=${profilePageActive}><a href="${pageContext.request.contextPath}/profilePage">Change Profile</a></li> <!-- addInventory.jsp -->
                     </ul>
                 </div><!-- /.navbar-collapse -->
             </div><!-- /.container-fluid -->

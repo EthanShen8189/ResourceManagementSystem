@@ -23,6 +23,7 @@ public class ResViewController {
 
 	private static String userName;
 	private static String firstName;
+	private static String password;
 	private static long department_id;
 	//private ResNavigationBarService resNavigationBarService = new ResNavigationBarService();
 
@@ -38,6 +39,26 @@ public class ResViewController {
 
 	void setFirstName(String firstName) {
 		ResViewController.firstName = firstName;
+	}
+
+	void setPassword(String password) {
+		ResViewController.password = password;
+	}
+
+	String getUserName() {
+		return userName;
+	}
+
+	String getFirstName() {
+		return firstName;
+	}
+
+	String getPassword() {
+		return password;
+	}
+
+	long getDepartment_id() {
+		return department_id;
 	}
 
 	void setDepartment_id(long department_id) {
@@ -80,7 +101,11 @@ public class ResViewController {
 	}
 
 	@RequestMapping(value = "/profilePage")
-	public ModelAndView profilePage(){
+	public ModelAndView profilePage(String msg, String esg){
+		if(msg == null || esg==null){
+			msg = "";
+			esg = "";
+		}
 		modelAndView.setViewName("reservation/resIndex");
 		modelAndView.addObject("name", firstName);
 		modelAndView.addObject("username", userName);
@@ -88,6 +113,11 @@ public class ResViewController {
 		modelAndView.addObject("newReservationPageActive", "");
 		modelAndView.addObject("myReservationPageActive","");
 		modelAndView.addObject("profilePageActive", "active");
+		if(!msg.equals("")){
+			modelAndView.addObject("sucMsg", msg);
+		}else{
+			modelAndView.addObject("eMsg", esg);
+		}
 		modelAndView.addObject("selectedTab", "../../jsp/reservation/profile.jsp");
 		return modelAndView;
 		

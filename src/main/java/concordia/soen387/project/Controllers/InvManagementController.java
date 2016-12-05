@@ -311,6 +311,8 @@ public class InvManagementController {
             return invViewController.accountSettingTab("","Confirm Password is not matching with new password.");
         }else if(oldPassword.equals(newPassword)){
             return invViewController.accountSettingTab("","New password cannot be the same as old password");
+        }else if(!oldPassword.equals(invViewController.getPassword())){
+            return invViewController.accountSettingTab("","Old password wrong, please try again.");
         }else if(confirmPassword.equals(newPassword)){
             Employee employee = invManagementService.getEmployeeById(username, Integer.parseInt(departmentId));
             employee.setPassword(newPassword);

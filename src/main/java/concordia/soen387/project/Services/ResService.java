@@ -64,21 +64,6 @@ public class ResService {
     }
 
     public List<MyReservation> getAllMyreservations(String username){
-        /*
-        List<Reservation> reservationList = reservationDao.getAllReservationByUsername(username);
-        Map<, Reservation>
-        List<ReservationResources> reservationResourcesList = new ArrayList<>();
-        List<Resource> resourceList = new ArrayList<>();
-
-        for(Reservation reservation: reservationList){
-            reservationResourcesList.add(reservationResourceDao.getReservationResourceById(reservation.getId()));
-        }
-
-        for(ReservationResources reservationResources: reservationResourcesList){
-            resourceList.add(resourceDao.getResourceById(reservationResources.getResource_id()));
-        }
-        */
-
         return myReservationDao.getAllMyReservation(username);
     }
 }
