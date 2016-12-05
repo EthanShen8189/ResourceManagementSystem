@@ -2,6 +2,7 @@ package concordia.soen387.project.Dao;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.sql.DataSource;
@@ -78,11 +79,28 @@ public class ReservationResourceDaoImpl implements ReservationResourceDao{
 
         return reservationResourceList;
 	}
-	
+
+	@Override
+	public List<Long> getAllreservationWithID(long l) {
+		String sql = "SELECT * FROM reservation_resources WHERE resources_id=" + l;
+		List<ReservationResources> reservationResourceList = jdbcTemplate.query(sql, new RowMapper<ReservationResources>() {
+			@Override
+			public ReservationResources mapRow(ResultSet resultSet, int i) throws SQLException {
+				return initReservationResources(resultSet);
+			}
+		});
+
+		List<Long> reservationIDList = new ArrayList<>();
+		for(ReservationResources reservationResources: reservationResourceList){
+			reservationIDList.add((long) reservationResources.getReservation_id());
+		}
+		return reservationIDList;
+	}
+
 	private ReservationResources initReservationResources(ResultSet resultSet) throws SQLException{
 		ReservationResources reservationResources = new ReservationResources();
 		reservationResources.setReservation_id(resultSet.getInt("reservation_id"));
-		reservationResources.setResource_id(resultSet.getInt("resource_id"));
+		reservationResources.setResource_id(resultSet.getInt("resources_id"));
 		return reservationResources;
 	}
 

@@ -2,7 +2,6 @@
 
   <div class="container-fluid">
     <font color="green">${msg}</font>
-    <font color="red">${errorMsg}</font>
     <div class="row">
         <div class="main">
           <h2>Search</h2>

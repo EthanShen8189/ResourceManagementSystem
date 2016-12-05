@@ -49,20 +49,22 @@
                   <input type="hidden" name="username" value="${username}">
                 <div>
                   <div class="form-group">
-                    <label for="start_date">Start Date</label>
+                    <label for="start_date">Date</label>
                     <input class="form-control" id="start_date" type="date" name="start_date">
                   </div>
                   <div class="form-group">
                     <label for="start_time">Start Time</label>
-                    <input class="form-control" id="start_time" type="time" name="start_time">
+                    <input class="form-control" id="start_time" type="time" name="start_time" min="08:00:00" max="23:00:00">
                   </div>
+                    <!--
                   <div class="form-group">
                     <label for="end_date">End Date</label>
                     <input class="form-control" id="end_date" type="date" name="end_date">
                   </div>
+                  -->
                   <div class="form-group">
                     <label for="end_time">End Time</label>
-                    <input class="form-control" id="end_time" type="time" name="end_time">
+                    <input class="form-control" id="end_time" type="time" name="end_time" min="08:00:00" max="23:00:00">
                   </div>
                   <input class="btn btn-primary" type="submit" value="Reserve">
                 </div>

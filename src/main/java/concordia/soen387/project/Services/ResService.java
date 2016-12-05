@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import java.util.List;
+
 /**
  * Created by Ethan Shen on 12/4/2016.
  */
@@ -41,4 +43,11 @@ public class ResService {
         reservationResourceDao.addReservationResource(reservationResources);
     }
 
+    public List<Long> getAllReservationWithID(long l) {
+        return reservationResourceDao.getAllreservationWithID(l);
+    }
+
+    public Reservation getReservationByID(Long reservationID) {
+        return reservationDao.getReservationById(reservationID);
+    }
 }

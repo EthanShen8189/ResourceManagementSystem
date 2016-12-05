@@ -52,7 +52,7 @@ public class ReservationDaoImpl implements ReservationDao{
     }
 
     @Override
-    public Reservation getReservationById(int reservationId) {
+    public Reservation getReservationById(long reservationId) {
     	String sql = "SELECT * FROM reservation WHERE id=" + reservationId;
     	return jdbcTemplate.query(sql, new ResultSetExtractor<Reservation>() {
 
@@ -94,6 +94,20 @@ public class ReservationDaoImpl implements ReservationDao{
                 return null;
             }
         });
+    }
+
+    @Override
+    public List<Reservation> getAllreservationWithID(long l) {
+        String sql = "SELECT * FROM reservation WHERE id=" + l;
+        List<Reservation> reservationList = jdbcTemplate.query(sql, new RowMapper<Reservation>(){
+
+            @Override
+            public Reservation mapRow(ResultSet resultSet, int i) throws SQLException {
+                return initReservation(resultSet);
+            }
+
+        });
+        return reservationList;
     }
 
     private Reservation initReservation(ResultSet resultSet) throws SQLException{
