@@ -35,3 +35,48 @@
 		</form>
 	</c:forEach>
 </c:if>
+
+
+<script>
+	$('#editRoom').validate({
+		rules : {
+			name : {
+				required : true
+			},
+			description : {
+				required : true
+			},
+			roomNumber : {
+				required : true
+			},
+			roomBuilding : {
+				required : true
+			},
+			roomCapacity : {
+				required : true
+			}
+		},
+		messages : {
+			name : "Name field cannot be blank.",
+			description : "Description field cannot be blank.",
+			roomNumber : "Please enter a room number",
+			roomBuilding : "Please enter a value for building.",
+			roomCapacity : "Please enter a value for capacity."
+		},
+		highlight : function(element) {
+			$(element).closest('.form-group').addClass('has-error');
+		},
+		unhighlight : function() {
+			$(element).closest('.form-group').removeClass('has-error');
+		},
+		errorElement : 'span',
+		errorClass : 'help-block',
+		errorPlacement : function(error, element) {
+			if (element.parent('.form-group').length) {
+				error.insertAfter(element.parent());
+			} else {
+				error.insertAfter(element);
+			}
+		}
+	});
+</script>

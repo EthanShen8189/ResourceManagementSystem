@@ -77,3 +77,51 @@
 		</form>
 	</c:forEach>
 </c:if>
+
+<script>
+	$('#editProjector')
+			.validate(
+					{
+						rules : {
+							name : {
+								required : true
+							},
+							description : {
+								required : true
+							},
+							projectorWidth : {
+								required : true
+							},
+							projectorHeight : {
+								required : true
+							},
+							projectorRoomNumber : {
+								required : true
+							}
+						},
+						messages : {
+							name : "Name field cannot be blank.",
+							description : "Description field cannot be blank.",
+							projectorWidth : "Please enter a resolution width for the projector.",
+							projectorHeight : "Please enter a resolution height for the projector.",
+							projectorRoomNumber : "Please enter a room number for the projector."
+						},
+						highlight : function(element) {
+							$(element).closest('.form-group').addClass(
+									'has-error');
+						},
+						unhighlight : function() {
+							$(element).closest('.form-group').removeClass(
+									'has-error');
+						},
+						errorElement : 'span',
+						errorClass : 'help-block',
+						errorPlacement : function(error, element) {
+							if (element.parent('.form-group').length) {
+								error.insertAfter(element.parent());
+							} else {
+								error.insertAfter(element);
+							}
+						}
+					});
+</script>

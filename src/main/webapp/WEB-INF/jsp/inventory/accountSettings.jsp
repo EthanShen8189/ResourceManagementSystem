@@ -45,3 +45,50 @@
 		</div>
 	</div>
 </div>
+
+
+<script>
+	$('#passwordForm').validate({
+		rules : {
+			oldPassword : {
+				required : true
+			},
+			newPassword : {
+				required : true,
+				minlength : 6
+			},
+			confirmPassword : {
+				required : true,
+				minlength : 6,
+				equalTo : "#newPassword"
+			}
+		},
+		messages : {
+			oldPassword : "Please enter your old password.",
+			newPassword : {
+				required : "Please enter a new password.",
+				minlength : "Your password must be at least 6 characters long"
+			},
+			confirmPassword : {
+				required : "Please enter a new password.",
+				minlength : "Your password must be at least 6 characters long",
+				equalTo : "Passwords must match."
+			},
+		},
+		highlight : function(element) {
+			$(element).closest('.form-group').addClass('has-error');
+		},
+		unhighlight : function(element) {
+			$(element).closest('.form-group').removeClass('has-error');
+		},
+		errorElement : 'span',
+		errorClass : 'help-block',
+		errorPlacement : function(error, element) {
+			if (element.parent('.form-group').length) {
+				error.insertAfter(element.parent());
+			} else {
+				error.insertAfter(element);
+			}
+		}
+	});
+</script>

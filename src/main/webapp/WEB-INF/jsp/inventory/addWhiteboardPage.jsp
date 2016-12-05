@@ -38,3 +38,40 @@
 		</div>
 	</div>
 </form>
+
+<script>
+	$('#boardForm').validate({
+		rules: {
+			boardWidth: {
+				required: true
+			},
+			boardHeight: {
+				required: true
+			},
+			boardRoomNumber: {
+				required: true
+			}
+		},
+		messages: {
+			boardWidth: "Please enter a value for width.",
+			boardHeight: "Please enter a value for height.",
+			boardRoomNumber: "Please enter a value for room number."
+		},
+		highlight: function(element) {
+			$(element).closest.('.form-group').addClass('has-error');
+		},
+		unhighlight: function() {
+			$(element).closest.('.form-group').removeClass('has-error');
+		},
+		errorElement: 'span',
+		errorClass: 'help-block',
+		errorPlacement: function(error, element) {
+			if(element.parent('.form-group').length) {
+				error.insertAfter(element.parent());
+			} else {
+				error.insertAfter(element);
+			}
+		}
+	});
+
+</script>

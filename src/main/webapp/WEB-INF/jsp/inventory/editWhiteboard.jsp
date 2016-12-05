@@ -52,3 +52,47 @@
 		</form>
 	</c:forEach>
 </c:if>
+
+<script>
+	$('#editWhiteboard').validate({
+		rules : {
+			name : {
+				required : true
+			},
+			description : {
+				required : true
+			},
+			boardWidth : {
+				required : true
+			},
+			boardHeight : {
+				required : true
+			},
+			boardRoomNumber : {
+				required : true
+			}
+		},
+		messages : {
+			name : "Name field cannot be blank.",
+			description : "Description field cannot be blank.",
+			boardWidth : "Please enter a value for width.",
+			boardHeight : "Please enter a value for height.",
+			boardRoomNumber : "Please enter a value for room number."
+		},
+		highlight : function(element) {
+			$(element).closest('.form-group').addClass('has-error');
+		},
+		unhighlight : function() {
+			$(element).closest('.form-group').removeClass('has-error');
+		},
+		errorElement : 'span',
+		errorClass : 'help-block',
+		errorPlacement : function(error, element) {
+			if (element.parent('.form-group').length) {
+				error.insertAfter(element.parent());
+			} else {
+				error.insertAfter(element);
+			}
+		}
+	});
+</script>

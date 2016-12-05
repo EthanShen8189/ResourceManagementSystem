@@ -53,3 +53,33 @@
     </div>
 </c:if>
 <p><font color="red">${errorMsg}</font></p>
+
+<script>
+    $('.searchForm').validate({
+        rules: {
+            search: {
+                required: true
+            }
+        },
+        messages: {
+            search: "This cannot be blank, you must search for a resource."
+        },
+        highlight: function() {
+            $(".form-div-primary").addClass("has-error");
+            $(".search-btn").addClass("btn-danger");
+        },
+        unhighlight: function() {
+            $(".form-div-primary").removeClass("has-error");
+            $(".search-btn").removeClass("btn-danger");
+        },
+        errorElement: 'span',
+        errorClass: 'help-block',
+        errorPlacement: function(error, element) {
+            if(element.parent('.input-group').length) {
+                error.insertAfter(element.parent());
+            } else {
+                error.insertAfter(element);
+            }
+        }
+    });
+</script>

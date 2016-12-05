@@ -125,3 +125,60 @@
         </form>
     </c:forEach>
 </c:if>
+
+
+<script>
+    $('#editComputer')
+            .validate(
+                    {
+                        rules : {
+                            name : {
+                                required : true
+                            },
+                            description : {
+                                required : true
+                            },
+                            machineType : {
+                                required : true
+                            },
+                            hostName : {
+                                required : true
+                            },
+                            operatingSystem : {
+                                required : true
+                            },
+                            manufacturer : {
+                                required : true
+                            },
+                            model : {
+                                required : true
+                            }
+                        },
+                        messages : {
+                            name : "Name field cannot be blank.",
+                            description : "Description field cannot be blank.",
+                            machineType : "Please enter a type for computer.",
+                            hostName : "Please enter a host name for the computer.",
+                            operatingSystem : "Please enter an operating system for the computer.",
+                            manufacturer : "Please enter a manufacturer for the computer.",
+                            model : "Please enter a model for the computer."
+                        },
+                        highlight : function(element) {
+                            $(element).closest('.form-group').addClass(
+                                    'has-error');
+                        },
+                        unhighlight : function() {
+                            $(element).closest('.form-group').removeClass(
+                                    'has-error');
+                        },
+                        errorElement : 'span',
+                        errorClass : 'help-block',
+                        errorPlacement : function(error, element) {
+                            if (element.parent('.form-group').length) {
+                                error.insertAfter(element.parent());
+                            } else {
+                                error.insertAfter(element);
+                            }
+                        }
+                    });
+</script>

@@ -61,4 +61,13 @@
 
 </div>
 
+<script>
+    $(document).ready(function() {
+        $('#resource li').click(function(){
+            var form = $(this).attr("id") + "form";
+            $("[style]").hide();
+            $("#" + form).show();
+        });
+    });
+</script>
 
